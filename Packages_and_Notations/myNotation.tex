@@ -3,16 +3,21 @@
 \renewcommand{\R}{\ifmmode \mathbb{R} \else $\mathbb{R}$ \fi}
 \renewcommand{\Q}{\ifmmode \mathbb{Q} \else $\mathbb{Q}$ \fi}
 \renewcommand{\N}{\ifmmode \mathbb{N} \else $\mathbb{N}$ \fi}
+% Math symbols
+\newcommand{\exist}{\exists \hspace{0.25em}}
+\newcommand{\existonly}{\exists! \hspace{0.25em}}
+\newcommand{\any}{\forall \hspace{0.25em}}
+
 
 %% Environment styles
 % XXX need to add more
 \newenvironment{proof}
     {\hspace*{0.5em}\textbf{pf:} \begin{quote}}
     {\end{quote}}
-\newtheorem{theorem}{Thm}[section]
+\newtheorem{thm}{Thm}[section]
 \newtheorem{corollary}{Corollary}[theorem]
 \newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{definition}{Def.}[section]
+\newtheorem{def}{Def.}[section]
  
 
 
