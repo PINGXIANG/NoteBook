@@ -1,0 +1,24 @@
+%% my notation for typing inside the sentences
+% Number sets
+\renewcommand{\R}{\ifmmode \mathbb{R} \else $\mathbb{R}$ \fi}
+\renewcommand{\Q}{\ifmmode \mathbb{Q} \else $\mathbb{Q}$ \fi}
+\renewcommand{\N}{\ifmmode \mathbb{N} \else $\mathbb{N}$ \fi}
+
+%% Environment styles
+% XXX need to add more
+\newenvironment{proof}
+    {\hspace*{0.5em}\textbf{pf:} \begin{quote}}
+    {\end{quote}}
+\newtheorem{theorem}{Thm}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}{Def.}[section]
+ 
+
+
+%% Linear algebra notations
+% Matrix
+\newcommand{\mat}[1]{\begin{bmatrix*}[r]#1\end{bmatrix*}}
+\newcommand{\matc}[1]{\begin{bmatrix}#1\end{bmatrix}}
+% Determinant
+\renewcommand{\det}[1]{\begin{vmatrix*}[r]#1\end{vmatrix*}}
