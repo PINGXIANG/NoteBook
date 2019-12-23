@@ -14,13 +14,18 @@
 \newenvironment{proof}
     {\hspace*{0.5em}\textbf{pf:} \begin{quote}}
     {\end{quote}}
+    
+       % Some new sets that Amy added
+    \newtheorem{theorem}{Theorem}[section]
+    \newtheorem{definition}{Definition}
+
 \newtheorem{theorem}{Thm}[section]
 \newtheorem{corollary}{Corollary}[theorem]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{definition}{Def.}[section]
 \newtheorem{example}{E.X.}{section}
 
-
+\renewcommand{\iff}{\quad \textit{iff} \quad}
  
 
 
