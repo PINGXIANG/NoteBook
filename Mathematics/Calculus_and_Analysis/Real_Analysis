@@ -135,7 +135,7 @@
         $\{a_n\}$ is bounded $\Rightarrow \exist \{ a_{n_k} \} \subseteq \{ a_n\}$ is convergent
     \end{theorem}
     \begin{proof}
-    \begin{tikzpicture}[scale=1]
+        \begin{tikzpicture}[scale=1]
 \coordinate (P) at (0, 0);
 \coordinate (A) at (1, 0);
 \coordinate (B) at (2, 0);
@@ -145,12 +145,12 @@
 \coordinate (F) at (6, 0);
 \coordinate (G) at (7, 0);
 \draw[->] (P)--(G) node [below right]{$x$};
-\draw (A) node[below] {$-M$} -- ++(0, 3pt) ;
-\draw (C) node[below] {0} -- ++ (0, 3pt);
-\draw (F) node[below] {$M$} -- ++(0, 3pt) ;
-\draw (A) node[above] {$[$};
-\draw (C) node[above] {$][$};
-\draw (F) node[above] {$]$};
+\draw (A) node[below] {$-M$};
+\draw (C) node[below] {0};
+\draw (F) node[below] {$M$} ;
+\draw (A) node {$[$};
+\draw (C) node {$][$};
+\draw (F) node {$]$};
 \draw (E) node[above] {$I_1$};
 \end{tikzpicture}
 \indent $\Longrightarrow$ \\
@@ -166,12 +166,12 @@
 \coordinate (F) at (6, 0);
 \coordinate (G) at (7, 0);
 \draw[->] (P)--(G) node [below right]{$x$};
-\draw (A) node[below] {$-M$} -- ++(0, 3pt) ;
-\draw (C) node[below] {0} -- ++ (0, 3pt);
-\draw (F) node[below] {$M$} -- ++(0, 3pt) ;
-\draw (C) node[above] {$[$};
-\draw (H) node[above] {$][$};
-\draw (F) node[above] {$]$};
+\draw (A) node[below] {$-M$} ;
+\draw (C) node[below] {0} ;
+\draw (F) node[below] {$M$}  ;
+\draw (C) node {$[$};
+\draw (H) node {$][$};
+\draw (F) node {$]$};
 \draw (I) node[above] {$I_2$};
 \end{tikzpicture}
 \indent $\cdots$\\
