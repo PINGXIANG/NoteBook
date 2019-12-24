@@ -1,17 +1,18 @@
-\documentclass[UTF8]{article}
-\input{preamble.tex}
-
-\begin{document}
-\input{myNotation.tex}
-
-
 \section{The axiom of completeness}
+\begin{notation}
+    \item $a_0 \in \mathcal{A} \in \R$ is \uline{maximum of A} \iff $a_0 > a, \any a \in \mathcal{A}$.
+    \footnote{The biggest difference between $sup \mathcal{A}$: $a_0 \in \mathcal{A}$.}
+    \item $c + A := \{ c+a : a\in \mathcal{A} \}$.
+    \footnote{If $\mathcal{A}$ is bounded \& nonempty, then $sup (c+\mathcal{A}) = c + sup \mathcal{A}$.}
+\end{notation}
+
 \begin{definition}
-    Set \mathcal{A} is \underline{bounded above} \iff $\exist$ b $\in \R$ s.t, $\any a \in \R, a \leq b$
+    Set $\mathcal{A}$ is \uline{bounded above} \iff $\exist$ b $\in \R$ s.t, $\any a \in \R, a \leq b$.\\
+    Similarly for \uline{bounded below}.
 \end{definition}
 
 \begin{definition}
-    $s \in \R$ \underline{least upper bound} for Set $\mathcal{A} \subseteq \R$ \iff 
+    $s \in \R$ \uline{least upper bound} for Set $\mathcal{A} \subseteq \R$ \iff 
 
     \romannumeral 1 ) $s$ is on upper bound for $\mathcal{A}$
         
@@ -25,13 +26,13 @@
 
 \begin{lemma}
     If $S \in \R$ is an upper bound for set $\mathcal{A} \subseteq \R$, Then\\
-    \indent $S = sup \mathcal{A} \Longleftrightarrow \any \epsilon > 0$, $\exist a \in \mathcal{A}$ such that $S - \epsilon < a$
+    \indent $S = sup \mathcal{A} \equiv \any \epsilon > 0$, $\exist a \in \mathcal{A}$ s.t, $S - \epsilon < a$.
 \end{lemma}
 \begin{proof}
     $(\Rightarrow)$ \\
-    $S = sup \mathcal{A} \Longrightarrow \any \epsilon > 0$, $\exist a \in \mathcal{A}$ such that $S - \epsilon < a$\\
+    $S = sup \mathcal{A} \Rightarrow \any \epsilon > 0$, $\exist a \in \mathcal{A}$ such that $S - \epsilon < a$.\\
     $(\Leftarrow)$ \\
-    Assume s $\neq sup \mathcal{A}, $ then $\epsilon = \frac{1}{2} (S - sup \mathcal{A})$
+    Assume s $\neq sup \mathcal{A}, $ then take $\epsilon = \frac{1}{2} (S - sup \mathcal{A})$.
 \end{proof}
 
 \begin{theorem}[Nested Interval Theorem]
@@ -41,62 +42,65 @@ $\any n \in \N$, $I_n := [a_n, b_n] \subseteq \R$. If $I_1 \supseteq I_2 \supset
 
 \begin{proof}
     $\mathcal{A} = \{a_n | n \in \N\}$\\
-    since $\mathcal{A}$ is upper bounded, not empty, by \textit{C.A}., $\exist sup \mathcal{A} = x$\\
+    since $\mathcal{A}$ is upper bounded, not empty, by \textit{C.A}., $\exist sup \mathcal{A} = x$.\\
     WTS: x $\in \bigcap\limits_{n=1}^{\infty} I_n$ \\
     Since x is sup $\mathcal{A}, a_n \leq x, \any n \in \N$.\\
-    Since $b_n$ is upper bound for $\mathcal{A}$, and x = sup $\mathcal{A}$, x $\leq b_n$, $\any n \in \N$ \\
-    thus, x $\in \bigcap\limits_{n=1}^{\infty} I_n \Rightarrow $ not  empty \\
-    similarly, $inf \mathcal{B} \in \bigcap\limits_{n=1}^{\infty} I_n$
+    Since $b_n$ is upper bound for $\mathcal{A}$, and x = sup $\mathcal{A}$, x $\leq b_n$, $\any n \in \N$. \\
+    thus, x $\in \bigcap\limits_{n=1}^{\infty} I_n \Rightarrow $ not  empty. \\
+    * similarly, $inf \mathcal{B} \in \bigcap\limits_{n=1}^{\infty} I_n$.
 \end{proof}
 
 \begin{quote}
 \begin{example}
 $I_n = (0, \frac{1}{n})$, but $\bigcap\limits_{n=1}^{\infty} I_n = \emptyset$\\
 \begin{proof}
-    Assume not empty, then we can find x $\in (0, \frac{1}{n}), \any n \in \N$ \\
-    let n $\in \N$ be given, x $\in (0, \frac{1}{n}$)\\
-    then, $\exist \frac{1}{m} < x < \frac{1}{n}$, such that x $\notin (0, \frac{1}{m})$
+    Assume not empty, then we can find x $\in (0, \frac{1}{n}), \any n \in \N$. \\
+    Let n $\in \N$ be given, x $\in (0, \frac{1}{n}$).\\
+    Then, $\exist \frac{1}{m} < x < \frac{1}{n}$, s.t, $x \notin (0, \frac{1}{m})$
 \end{proof}
 \end{example}
 \end{quote}
 
-
 \begin{theorem}[Density of \textbf{Q} in \textbf{R}]
-$\any a, b \in \R,$ $\exist r \in \Q $ such that $a < r < b$.    
+\label{Density of Q in R}
+$\any a, b \in \R,$ $\exist r \in \Q $ s.t, $a < r < b$. 
+\footnote{Unfortunately, Archimedean Property for \N cannot be used for the proof.}
 \end{theorem}
 
 \begin{proof}
-    Let m be the smallest integer $m>na$. Then $m-1 \leq na<m \Rightarrow a < \frac{m}{n}$\\
+    Let m be the smallest integer, s.t, $m>na$. Then $m-1 \leq na<m \Rightarrow a < \frac{m}{n}$.\\
     Let n large enough, $\frac{1}{n} < b-a \equiv a < b- \frac{1}{n}$ 
 \end{proof}
 
 \section{Sequences}
 \begin{definition}
-    A \uline{sequence} is a \uwave{function} a: $\N \rightarrow \R$
+    A \uline{sequence} is a \uwave{function} $a_n: \N \rightarrow \R$.
 \end{definition}
 \begin{definition}
-    A sequence $\{a_n\}$ \uline{converges} to a $\in \R$ \iff $\any \epsilon > 0, \exist N \in \N$ s.t, $\any n \geq \N,$ $|a_n - a| < \epsilon \equiv a_n \in V_\epsilon (a)$. \\
-    Noted as $\lim_{x\to\infty} a_n = a$, or $a_n \rightarrow$ a
+    A sequence $\{a_n\}$ \uline{converges to a} $\in \R$ \iff $\any \epsilon > 0, \exist N \in \N$ s.t, $\any n \geq \N,$ $|a_n - a| < \epsilon \equiv a_n \in V_\epsilon (a)$. \\
+    Noted as $\lim_{x\to\infty} a_n = a$, or $a_n \rightarrow$ a.
 \end{definition}
 \begin{definition}
-    Given a $\in \R$, $\epsilon > 0, $ the set $V_\epsilon (a) = \{ x \in \R : |x-a|<\epsilon\}$ is called the $\epsilon$-neighborhood of a.
+    Given a $\in \R$, $\epsilon > 0, $ the set $V_\epsilon (a) = \{ x \in \R : |x-a|<\epsilon\}$ is called the \uline{$\epsilon$-neighborhood of $a$}.
 \end{definition}
-\begin{theorem}[Triangle Inequality]
-(1) $|a+b| \leq |a| + |b|$\\
-(2) $||a|-|b|| \leq |a-b|$
+\begin{theorem}[Triangle Inequality] \hspace{1em}
+\begin{enumerate}
+    \item $|a+b| \leq |a| + |b|$. 
+    \item $||a|-|b|| \leq |a-b|$.
+\end{enumerate}
 \end{theorem}
 \begin{proof}
-$|a|=|a-b+b|\leq |a-b| + |b| \Longrightarrow |a|-|b| \leq |a-b|$\\
-similarly, $|b|-|a|\leq |a-b|$\\
-Then, $||a|-|b|| \leq |a-b|$
+$|a|=|a-b+b|\leq |a-b| + |b| \Longrightarrow |a|-|b| \leq |a-b|$.\\
+Similarly, $|b|-|a|\leq |a-b|$.\\
+Then, $||a|-|b|| \leq |a-b|$.
 \end{proof}
 \begin{theorem}[Squeeze Theorem]
     If $x_n \leq y_n \leq z_n$, $\any n \in \N $, then
     
-    $\lim_{n\to\infty} x_n = \lim_{n\to\infty} z_n = l \Rightarrow \lim_{n\to\infty} y_n = l$
+    $\lim_{n\to\infty} x_n = \lim_{n\to\infty} z_n = l \Rightarrow \lim_{n\to\infty} y_n = l$.
 \end{theorem}
 \begin{proof}
-    (\emph{Order limit theorem} cannot be used since "$\lim_{n\to\infty} y_n$ exists" is unknown.)
+    (\uline{Order limit theorem} cannot be used since "$\lim_{n\to\infty} y_n$ exists" is unknown.)
     Let $\epsilon>0$ be given.
     \begin{enumerate}
         \item $\exist N_1 \in \N$ s,t. $\any n \in \N$, $n \geq N_1 \Rightarrow |x_n-l|<\epsilon$.
@@ -106,15 +110,15 @@ Then, $||a|-|b|| \leq |a-b|$
     \[
         x_n \leq y_n \leq z_n \equiv -\epsilon < x_n - l \leq y_n -l \leq z_n - l <\epsilon \equiv |y_n - l| <\epsilon,
     \]
-    for all $n\geq N$
+    for all $n\geq N$.
 \end{proof}
 \begin{theorem}[Monotone Converge Theorem]
     If $\{a_n\}$ is monotone and bounded, then $\{a_n\}$ converges.
 \end{theorem}
 \begin{proof}
-    since $\{a_n\}$ is bounded, by CA, $\{a_n\}$ has a sup$\{a_n\}=L$\\
-    WTS: $lim_{n\to\infty} a_n = L$\\
-    Let $\epsilon >0$ be given since L is the sup$\{a_n\}$, we know there is a $a_{n_0} \in \{a_n\}$ such that $a_{n_0} + \epsilon > L$. Take $N=n_0,$ since $a_n is \uparrow$, $\any n >N,$ we have: $L+\epsilon > L >a_n > a_{n_0} > L - \epsilon$
+    Since $\{a_n\}$ is bounded, by CA, $\{a_n\}$ has a sup$\{a_n\}=L$.\\
+    WTS: $lim_{n\to\infty} a_n = L$.\\
+    Let $\epsilon >0$ be given since L is the sup$\{a_n\}$, we know there is a $a_{n_0} \in \{a_n\}$ such that $a_{n_0} + \epsilon > L$. Take $N=n_0,$ since $a_n is \uparrow$, $\any n >N,$ we have, $L+\epsilon > L >a_n > a_{n_0} > L - \epsilon$.
 \end{proof}
 
 \section{Series}
@@ -122,7 +126,7 @@ Then, $||a|-|b|| \leq |a-b|$
     $\sum_{i=1}^{\infty} a_i = \lim_{n\to\infty} S_n = \lim_{n\to\infty} (a_1 + a_2 +...+a_n)$.
 \end{definition}
 
-\noindent \textbf{Often used skills}
+\noindent \textbf{Often-used Skills}
 Given $a_n \leq 0 \Rightarrow \{ S_n\} $ is monotonously increasing,
 \begin{itemize}
     \item Prove: $\sum_{i=1}^{\infty} \frac{1}{n^2}$ converge. \\
@@ -147,7 +151,7 @@ Given $a_n \leq 0 \Rightarrow \{ S_n\} $ is monotonously increasing,
 \end{proof}
 
 \begin{example}
-$\{x_n\} = \{1,-1, 1, -1...\} divergent$.
+$\{x_n\} = \{1,-1, 1, -1...\}$ divergent.
 
 \begin{proof}
 $\{a_n\} = \{1,...,1\} \longrightarrow 1 \quad \& \quad \{b_n\} = \{-1,...,-1\} \longrightarrow -1$.\\
@@ -214,12 +218,12 @@ Thus, $\any k \in \N$, $k>K, x a_{n_k} \in I_k \Rightarrow |a_{n_k} - x|<\epsilo
     Cauchy sequence is bounded.
 \end{lemma}
 \begin{proof}
-    Let $\epsilon = 1$, $\exist N$ such that $|a_n-a_N| <1$, $\any n \geq N$\\
+    Let $\epsilon = 1$, $\exist N$ s.t, $|a_n-a_N| <1$, $\any n \geq N$\\
     Let M = max $\{a_1, a_2...a_n\}$\\
-    Then $M' = M+1$ is an upper bound of $\{a_n\}$
+    Then $M' = M+1$ is an upper bound of $\{a_n\}$.
 \end{proof}
 \begin{theorem}
-    $\{a_n\}$ is a Cauchy sequence $\equiv \{a_n\}$ convergent
+    $\{a_n\}$ is a Cauchy sequence $\equiv \{a_n\}$ convergent.
 \end{theorem}
 \begin{proof}
     ($\Rightarrow$) \\
@@ -229,4 +233,3 @@ Thus, $\any k \in \N$, $k>K, x a_{n_k} \in I_k \Rightarrow |a_{n_k} - x|<\epsilo
     ($\Leftarrow$) \\
     $|a_n -a_m| < |a_n - L | + |a_m - L | = \frac{\epsilon}{2}+\frac{\epsilon}{2} = \epsilon$.
 \end{proof}
-\end{document}
