@@ -2,140 +2,164 @@
 \input{preamble.tex}
 
 \begin{document}
-    \input{myNotation.tex}
-    \section{The axiom of completeness}
-    \begin{definition}
-        Set \mathcal{A} $\subseteq $ \underline{bounded above} if $\exist$b $\in \R$ such that $\any a \in \R$, $a \leq b$
-    \end{definition}
-%    \begin{definition}
-%        Set $\mathcal{A} \in \R$ \underline{bounded blow} if $\exist$b $\in \R$ such that $\any a \in \R$, $a \geq b$ 
-%    \end{definition}
-    \begin{definition}
-        $S \in \R$ \underline{least upper bound} for Set $\mathcal{A} \subseteq \R$ if 
-    
-        \romannumeral 1 ) S is on upper bound for $\mathcal{A}$
+\input{myNotation.tex}
+
+
+\section{The axiom of completeness}
+\begin{definition}
+    Set \mathcal{A} is \underline{bounded above} \iff $\exist$ b $\in \R$ s.t, $\any a \in \R, a \leq b$
+\end{definition}
+
+\begin{definition}
+    $s \in \R$ \underline{least upper bound} for Set $\mathcal{A} \subseteq \R$ \iff 
+
+    \romannumeral 1 ) $s$ is on upper bound for $\mathcal{A}$
         
-        \romannumeral 2 ) $\any b $ on upper bound for $\mathcal{A}, $ S $\leq b$
-    \end{definition}
-    %    \begin{definition}
-    %        $\mathcal{S} \in \R$ \underline{greatest upper bound} for Set \mathcal{A} $\in \R$ if
-    %    \end{definition}
-    \emph{Axion} The axion of completeness (Least upper bound property)\\
-    \indent $\any set \mathcal{A} \subseteq \R, \mathcal{A}$ is non-empty, bounded above, $\exist sup \mathcal{A} $ for $\mathcal{A}$
-    \begin{lemma}
-        $S \in \R$ is an upper bound for set $\mathcal{A} \subseteq \R$, Then\\
-        \indent $S = sup \mathcal{A} \Longleftrightarrow \any \epsilon > 0$, $\exist a \in \mathcal{A}$ such that $S - \epsilon < a$
-    \end{lemma}
-    \begin{proof}
-        $\Longrightarrow$ \\
-        % $S = sup \mathcal{A} \Longrightarrow \any \epsilon > 0$, $\exist a \in \mathcal{A}$ such that $S - \epsilon < a$
-        $\because S = sup \mathcal{A} \Longrightarrow S \leq M \Longrightarrow S -\epsilon$ is not upper bound $\Longrightarrow \exist a > S -\epsilon$ \\
-        $\Longleftarrow$ \\
-        % $S = sup \mathcal{A} \Longleftarrow \any \epsilon > 0$, $\exist a \in \mathcal{A}$ such that $S - \epsilon < a$
-        Assume s $\neq sup \mathcal{A}, $ then $\epsilon = \frac{1}{2} (S - sup \mathcal{A})$
-    \end{proof}
-    \begin{theorem}[Nested Inteval Theorem]
-    $\any n \in \N$, define $I_n = [a_n, b_n] \subseteq \R$, suppose $I_1 \supseteq I_2 \supseteq I_3 ... \supseteq I_n \supseteq I_{n+1}$, then $\bigcap\limits_{n=1}^{\infty} I_n \neq \emptyset$
-    \end{theorem}
-    \begin{quote}
-    $I_n = (0, \frac{1}{n})$, $\bigcap\limits_{n=1}^{\infty} I_n \neq \emptyset$\\
-    \begin{proof}
-        Assume not empty, then we can find x $\in (0, \frac{1}{n}), \any n \in \N$ \\
-        let n $\in \N$ be given, x $\in (0, \frac{1}{n}$)\\
-        then, $\exist \frac{1}{m} < x < \frac{1}{n}$, such that x $\notin (0, \frac{1}{m})$
-    \end{proof}
-    \end{quote}
-    \begin{proof}
-        $\mathcal{A} = \{a_n | n \in \N\}$\\
-        since $\mathcal{A}$ is upper bounded, not empty, by C$\mathcal{A}$, $\exist sup \mathcal{A} = x$\\
-        WTS: x $\in \bigcap\limits_{n=1}^{\infty} I_n$ \\
-        $\because$ x is sup $\mathcal{A}, a_n \leq x, \any n \in \N$ \\
-        $b_n$ is upper bound for $\mathcal{A}$, and x = sup $\mathcal{A}$, x $\leq b_n$, $\any n \in \N$ \\
-        thus, x $\in \bigcap\limits_{n=1}^{\infty} I_n \Rightarrow $ not  empty \\
-        similarly, in$\int^{n=1} B \in \bigcap\limits_{n=1}^{\infty} I_n$
-    \end{proof}
-    % page 3
-    Density $\Q$ of $\R$\\
-    \indent $\any a, b \in \R,$ $\exist r \in \Q $ such that $a < r < b$ \\
-    \begin{proof}
-        Let m be the smallest integer $m>na$. Thus $m-1 \leq na<m \Longrightarrow a < \frac{m}{n}$\\
-        Let n large enough, $\frac{1}{n} < b-a \iff a < b- \frac{1}{n}$ 
-    \end{proof}
-    \begin{definition}
-        A \underline{sequence} is a \emph{function} a: $\N \rightarrow \R$
-    \end{definition}
-    \begin{definition}
-        A sequence $\{a_n\}$ \underline{converges} to a $\in \R$ if $\any \epsilon > 0, \exist N \in \N$ such that $\any n \geq \N,$ $|a_n - a| < \epsilon \iff a_n \in V_\epsilon (a)$ \\
-        we say $\lim_{x\to\infty} a_n = a$, or $a_n \rightarrow$ a
-    \end{definition}
-    \begin{definition}
-        Given a $\in \R$, $\epsilon > 0, $ the set $V_\epsilon (a) = \{ x \in \R : |x-a|<\epsilon\}$ is called the $\epsilon$-neighborhood of a.
-    \end{definition}
-    \begin{theorem}[Triangle Inequality]
-    (1) $|a+b| \leq |a| + |b|$\\
-    (2) $||a|-|b|| \leq |a-b|$
-    \end{theorem}
-    \begin{proof}
-    $|a|=|a-b+b|\leq |a-b| + |b| \Longrightarrow |a|-|b| \leq |a-b|$\\
-    similarly, $|b|-|a|\leq |a-b|$\\
-    Then, $||a|-|b|| \leq |a-b|$
-    \end{proof}
-    \begin{theorem}[Squeeze Theorem]
-        $x_n \leq y_n \leq z_n$, $\any n \in \N $, and $\lim_{n\to\infty} x_n = \lim_{n\to\infty} = l \Longrightarrow \lim_{n\to\infty} y_n = l$
-    \end{theorem}
-    \begin{proof}
-        %不可以直接 order limit theorem [不知 $\lim_{n\to\infty} y_n exists$]
-        Let $\epsilon>0$ be given\\
-        1. $\exist N_1 \in \N$ such that $\any n \in \N$, $n \geq N_1 \Rightarrow |x_n-l|<\epsilon$\\
-        2. $\exist N_2 \in \N$ such that $\any n \in \N$, $n \geq N_2 \Rightarrow |z_n-l|<\epsilon$\\
-        take $N=max\{N_1, N_2\}$\\
-        $x_n \leq y_n \leq z_n \iff -\epsilon < x_n - l \leq y_n -l \leq z_n - l <\epsilon \iff |y_n - l| <\epsilon$ \\
-        Proveden $n\geq N$
-    \end{proof}
-    \begin{theorem}[Monotone Converge Theorem]
-        $\{a_n\}$ is monotone and bounded $\Longrightarrow$ $\{a_n\}$ converges
-    \end{theorem}
-    \begin{proof}
-        since $\{a_n\}$ is bounded, by CA, $\{a_n\}$ has a sup$\{a_n\}=L$\\
-        WTS: $lim_{n\to\infty} a_n = L$\\
-        Let $\epsilon >0$ be given since L is the sup$\{a_n\}$, we know there is a $a_{n_0} \in \{a_n\}$ such that $a_{n_0} + \epsilon > L$. Take $N=n_0,$ since $a_n is \uparrow$, $\any n >N,$ we have: $L+\epsilon > L >a_n > a_{n_0} > L - \epsilon$
-    \end{proof}
-    % page 6
-    \begin{definition}
-        $\sum_{i=1}^{\infty} a_i (series)= \lim_{n\to\infty} S_n $ (partial sums) $= \lim_{n\to\infty} (a_1 + a_2 +...+a_n)$
-    \end{definition}
-    % 常用技巧
-    1. $a_n \leq 0 \Rightarrow \{ S_n\} $ is monotonously increasing
-    \begin{itemize}
-        \item Prove: $\sum_{i=1}^{\infty} \frac{1}{n^2}$ converge \\
-        $S_n = \frac{1}{1\cdot 1} + \frac{1}{2\cdot2} +...+ \frac{1}{n\cdot n} < \frac{1}{1} + \frac{1}{1\cdot 2} + ...+ \frac{1}{(n-1)\cdot n} = 1 + 1 - \frac{1}{n} = 2 - \frac{1}{n}$
-        \item Prove: 
-        $\sum_{i=1}^{\infty} \frac{1}{n}$ diverge \\
-        $S_n = \frac{1}{1} + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} +...+ \frac{1}{n}$. Let $n=2^k$\\
-        $S_{2^k} = 1 + \frac{1}{2} + (\frac{1}{3}+\frac{1}{4})+...+\frac{1}{2^{k-1}}+\frac{1}{2^k}$\\
-        > $1+\frac{1}{2}+(\frac{1}{2^2}+\frac{1}{2^2})+...+2^k \cdot \frac{1}{2^k}$\\
-        = $1+\frac{1}{2}+\frac{1}{2}+...+\frac{1}{2} = 1+\frac{k}{2}$
-    \end{itemize}
-    \begin{definition}
-        let $\{a_n\}$ be a sequence, $n_1 < n_2 <...$ be \emph{a increasing of natural numbers.} Then: //
-        $\{b_n\}$ is a \underline{subsequence} of $\{a_n\}$ \iff $b_1 = a_{n_1}$, $b_2 = a_{n_2}...$
-    \end{definition}
-    \begin{theorem}
-        subsequence of a convergent sequence converge to the same limit of the original sequence.
-    \end{theorem}
-    \begin{proof}
-        $k\geq N$ such that $n_k \geq k \geq N$
-    \end{proof}
-    %使用方法 反证法
-    $\{x_n\} = \{1,-1, 1, -1...\}$\\
-    \indent $\{a_n\} = \{1,...,1\} \longrightarrow 1$
-    \indent $\{b_n\} = \{-1,...,-1\} \longrightarrow -1$\\
-    if $x_n \longrightarrow L$, then $a_n$, $b_n$ converge to the same thing.
-    \begin{theorem}[Bolzawo-Wereirstrass Theorem]
-        $\{a_n\}$ is bounded $\Rightarrow \exist \{ a_{n_k} \} \subseteq \{ a_n\}$ is convergent
-    \end{theorem}
-    \begin{proof}
-        \begin{tikzpicture}[scale=1]
+    \romannumeral 2 ) $\any b $ on upper bound for $\mathcal{A}, $ $s \leq b$\\
+    where $s$ is noted as sup $\mathcal{A}$.
+\end{definition}
+
+\noindent \textbf{Axiom} \uwave{The axiom of completeness} (Least upper bound property)
+
+\indent $\any set \mathcal{A} \subseteq \R, \mathcal{A}$ is non-empty, bounded above, $\exist sup \mathcal{A} $ for $\mathcal{A}$.
+
+\begin{lemma}
+    If $S \in \R$ is an upper bound for set $\mathcal{A} \subseteq \R$, Then\\
+    \indent $S = sup \mathcal{A} \Longleftrightarrow \any \epsilon > 0$, $\exist a \in \mathcal{A}$ such that $S - \epsilon < a$
+\end{lemma}
+\begin{proof}
+    $(\Rightarrow)$ \\
+    $S = sup \mathcal{A} \Longrightarrow \any \epsilon > 0$, $\exist a \in \mathcal{A}$ such that $S - \epsilon < a$\\
+    $(\Leftarrow)$ \\
+    Assume s $\neq sup \mathcal{A}, $ then $\epsilon = \frac{1}{2} (S - sup \mathcal{A})$
+\end{proof}
+
+\begin{theorem}[Nested Interval Theorem]
+\label{Nested Interval Theorem}
+$\any n \in \N$, $I_n := [a_n, b_n] \subseteq \R$. If $I_1 \supseteq I_2 \supseteq I_3 ... \supseteq I_n \supseteq I_{n+1}$, then $\bigcap\limits_{n=1}^{\infty} I_n \neq \emptyset$.
+\end{theorem}
+
+\begin{proof}
+    $\mathcal{A} = \{a_n | n \in \N\}$\\
+    since $\mathcal{A}$ is upper bounded, not empty, by \textit{C.A}., $\exist sup \mathcal{A} = x$\\
+    WTS: x $\in \bigcap\limits_{n=1}^{\infty} I_n$ \\
+    Since x is sup $\mathcal{A}, a_n \leq x, \any n \in \N$.\\
+    Since $b_n$ is upper bound for $\mathcal{A}$, and x = sup $\mathcal{A}$, x $\leq b_n$, $\any n \in \N$ \\
+    thus, x $\in \bigcap\limits_{n=1}^{\infty} I_n \Rightarrow $ not  empty \\
+    similarly, $inf \mathcal{B} \in \bigcap\limits_{n=1}^{\infty} I_n$
+\end{proof}
+
+\begin{quote}
+\begin{example}
+$I_n = (0, \frac{1}{n})$, but $\bigcap\limits_{n=1}^{\infty} I_n = \emptyset$\\
+\begin{proof}
+    Assume not empty, then we can find x $\in (0, \frac{1}{n}), \any n \in \N$ \\
+    let n $\in \N$ be given, x $\in (0, \frac{1}{n}$)\\
+    then, $\exist \frac{1}{m} < x < \frac{1}{n}$, such that x $\notin (0, \frac{1}{m})$
+\end{proof}
+\end{example}
+\end{quote}
+
+
+\begin{theorem}[Density of \textbf{Q} in \textbf{R}]
+$\any a, b \in \R,$ $\exist r \in \Q $ such that $a < r < b$.    
+\end{theorem}
+
+\begin{proof}
+    Let m be the smallest integer $m>na$. Then $m-1 \leq na<m \Rightarrow a < \frac{m}{n}$\\
+    Let n large enough, $\frac{1}{n} < b-a \equiv a < b- \frac{1}{n}$ 
+\end{proof}
+
+\section{Sequences}
+\begin{definition}
+    A \uline{sequence} is a \uwave{function} a: $\N \rightarrow \R$
+\end{definition}
+\begin{definition}
+    A sequence $\{a_n\}$ \uline{converges} to a $\in \R$ \iff $\any \epsilon > 0, \exist N \in \N$ s.t, $\any n \geq \N,$ $|a_n - a| < \epsilon \equiv a_n \in V_\epsilon (a)$. \\
+    Noted as $\lim_{x\to\infty} a_n = a$, or $a_n \rightarrow$ a
+\end{definition}
+\begin{definition}
+    Given a $\in \R$, $\epsilon > 0, $ the set $V_\epsilon (a) = \{ x \in \R : |x-a|<\epsilon\}$ is called the $\epsilon$-neighborhood of a.
+\end{definition}
+\begin{theorem}[Triangle Inequality]
+(1) $|a+b| \leq |a| + |b|$\\
+(2) $||a|-|b|| \leq |a-b|$
+\end{theorem}
+\begin{proof}
+$|a|=|a-b+b|\leq |a-b| + |b| \Longrightarrow |a|-|b| \leq |a-b|$\\
+similarly, $|b|-|a|\leq |a-b|$\\
+Then, $||a|-|b|| \leq |a-b|$
+\end{proof}
+\begin{theorem}[Squeeze Theorem]
+    If $x_n \leq y_n \leq z_n$, $\any n \in \N $, then
+    
+    $\lim_{n\to\infty} x_n = \lim_{n\to\infty} z_n = l \Rightarrow \lim_{n\to\infty} y_n = l$
+\end{theorem}
+\begin{proof}
+    (\emph{Order limit theorem} cannot be used since "$\lim_{n\to\infty} y_n$ exists" is unknown.)
+    Let $\epsilon>0$ be given.
+    \begin{enumerate}
+        \item $\exist N_1 \in \N$ s,t. $\any n \in \N$, $n \geq N_1 \Rightarrow |x_n-l|<\epsilon$.
+        \item $\exist N_2 \in \N$ s.t, $\any n \in \N$, $n \geq N_2 \Rightarrow |z_n-l|<\epsilon$.
+    \end{enumerate}
+    Take $N=max\{N_1, N_2\}$, then
+    \[
+        x_n \leq y_n \leq z_n \equiv -\epsilon < x_n - l \leq y_n -l \leq z_n - l <\epsilon \equiv |y_n - l| <\epsilon,
+    \]
+    for all $n\geq N$
+\end{proof}
+\begin{theorem}[Monotone Converge Theorem]
+    If $\{a_n\}$ is monotone and bounded, then $\{a_n\}$ converges.
+\end{theorem}
+\begin{proof}
+    since $\{a_n\}$ is bounded, by CA, $\{a_n\}$ has a sup$\{a_n\}=L$\\
+    WTS: $lim_{n\to\infty} a_n = L$\\
+    Let $\epsilon >0$ be given since L is the sup$\{a_n\}$, we know there is a $a_{n_0} \in \{a_n\}$ such that $a_{n_0} + \epsilon > L$. Take $N=n_0,$ since $a_n is \uparrow$, $\any n >N,$ we have: $L+\epsilon > L >a_n > a_{n_0} > L - \epsilon$
+\end{proof}
+
+\section{Series}
+\begin{definition}[Series]
+    $\sum_{i=1}^{\infty} a_i = \lim_{n\to\infty} S_n = \lim_{n\to\infty} (a_1 + a_2 +...+a_n)$.
+\end{definition}
+
+\noindent \textbf{Often used skills}
+Given $a_n \leq 0 \Rightarrow \{ S_n\} $ is monotonously increasing,
+\begin{itemize}
+    \item Prove: $\sum_{i=1}^{\infty} \frac{1}{n^2}$ converge. \\
+    $S_n = \frac{1}{1\cdot 1} + \frac{1}{2\cdot2} +...+ \frac{1}{n\cdot n} < \frac{1}{1} + \frac{1}{1\cdot 2} + ...+ \frac{1}{(n-1)\cdot n} = 1 + 1 - \frac{1}{n} = 2 - \frac{1}{n}$
+    \item Prove: 
+    $\sum_{i=1}^{\infty} \frac{1}{n}$ diverge. \\
+    $S_n = \frac{1}{1} + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} +...+ \frac{1}{n}$. Let $n=2^k$\\
+    $S_{2^k} = 1 + \frac{1}{2} + (\frac{1}{3}+\frac{1}{4})+...+\frac{1}{2^{k-1}}+\frac{1}{2^k}$\\
+    > $1+\frac{1}{2}+(\frac{1}{2^2}+\frac{1}{2^2})+...+2^k \cdot \frac{1}{2^k}$\\
+    = $1+\frac{1}{2}+\frac{1}{2}+...+\frac{1}{2} = 1+\frac{k}{2}$
+\end{itemize}
+\begin{definition}
+    let $\{a_n\}$ be a sequence, $n_1 < n_2 <...$ be \uwave{increasing of natural numbers}.\\
+    $\{b_n\}$ is a \uline{subsequence} of $\{a_n\}$ \iff $b_1 = a_{n_1}$, $b_2 = a_{n_2}, ... \any n \in \N$.
+\end{definition}
+
+\begin{theorem}
+    subsequence of a convergent sequence converge to the same limit of the original sequence.
+\end{theorem}
+\begin{proof}
+    Take $k\geq N$ s.t, $n_k \geq k \geq N$.
+\end{proof}
+
+\begin{example}
+$\{x_n\} = \{1,-1, 1, -1...\} divergent$.
+
+\begin{proof}
+$\{a_n\} = \{1,...,1\} \longrightarrow 1 \quad \& \quad \{b_n\} = \{-1,...,-1\} \longrightarrow -1$.\\
+if $x_n \longrightarrow L$, then $a_n$, $b_n$  $\longrightarrow L$.
+\end{proof}
+\end{example}
+\begin{theorem}[Bolzawo-Wereirstrass Theorem]
+    If $\{a_n\}$ is bounded, then $\exist \{ a_{n_k} \} \subseteq \{ a_n\}$ is convergent.
+\end{theorem}
+% XXX
+\begin{proof}
+\begin{tikzpicture}[scale=1]
 \coordinate (P) at (0, 0);
 \coordinate (A) at (1, 0);
 \coordinate (B) at (2, 0);
@@ -175,37 +199,34 @@
 \draw (I) node[above] {$I_2$};
 \end{tikzpicture}
 \indent $\cdots$\\
-Thus, I have: \\
-$I_1 \supseteq I_2 \supseteq \cdots \supseteq I_n$\\
-and len($I_n$) $\rightarrow$ 0 as n $\rightarrow \infty$ and by theorem in p2 $\bigcap\limits_{i=1}^{\infty} I_i \neq \emptyset$\\
-Let x $\in \bigcap\limits_{i=1}^{\infty} I_i$ and $n_i \in \N$ such that $a_{n_i} \in I_i$\\
-WTS: $\any \epsilon > 0$, $\exist k \in \N$ such that $\any k \in \N $, $k>K \Rightarrow |a_{n_k} - x| < \epsilon$\\
-since len$(I_n) \rightarrow 0$, $\exist k$ such that len$(I_k)<\epsilon$\\
-$\any k \in \N$, $k>K, x a_{n_k} \in I_k \Rightarrow |a_{n_k} - x|<\epsilon$
-    \end{proof}
-    \section{The Cauchy Criterion}
-    \begin{definition}
-        A sequence $\{a_n\}$ is called a Cauchy sequence if $\any \epsilon >0$, $\exist N \in \N$ such that  $\any m,n \in \N$, $m,n \geq N \Rightarrow |a_n-a_m| < \epsilon$ (OR sup $x_i$ - inf $x_j \rightarrow 0$, $i \geq N$, $j \geq N$)
-    \end{definition}
-    \begin{lemma}
-        Cauchy sequence is bounded
-    \end{lemma}
-    \begin{proof}
-        Let $\epsilon = 1$, $\exist N$ such that $|a_n-a_N| <1$, $\any n \geq N$\\
-        Let M = max $\{a_1, a_2...a_n\}$\\
-        Then $M' = M+1$ is an upper bound of $\{a_n\}$
-    \end{proof}
-    \begin{theorem}
-        $\{a_n\}$ is a Cauchy sequence $\Longleftrightarrow \{a_n\}$ convergent
-    \end{theorem}
-    \begin{proof}
-        $\Longrightarrow$ \\
-        %$\{a_n\}$ is a Cauchy sequence $\Longrightarrow \{a_n\}$ convergent
-        lemma + Bolzawo-Wereistrass \\
-        $\exist \{a_{n_k}\}$ convergent after $n_k$, 
-        take $N_0 = max \{ n_k, N\}$, $\any n \in\N$, $|a_n - L| = |a_n - a_{n_k}| + |a_{n_k} - L| < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon$ \\
-        $\Longleftarrow$ \\
-        %$\{a_n\}$ is a Cauchy sequence $\Longleftarrow \{a_n\}$ convergent
-        $|a_n -a_m| < |a_n - L | + |a_m - L | = \frac{\epsilon}{2}+\frac{\epsilon}{2} = \epsilon$
-    \end{proof}
+Thus, I have created nested intervals $I_1 \supseteq I_2 \supseteq \cdots \supseteq I_n \cdots$.\\
+Given len($I_n$) $\rightarrow$ 0 as n $\rightarrow \infty$. Further, by Thm \ref{Nested Interval Theorem}, $\bigcap\limits_{i=1}^{\infty} I_i \neq \emptyset$.\\
+Let x $\in \bigcap\limits_{i=1}^{\infty} I_i$ and $n_i \in \N$ s.t, $a_{n_i} \in I_i$\\
+WTS: $\any \epsilon > 0$, $\exist k \in \N$ s.t, $\any k \in \N $, $k>K \Rightarrow |a_{n_k} - x| < \epsilon$\\
+since len$(I_n) \rightarrow 0$, $\exist k$ s.t, len$(I_k)<\epsilon$.\\
+Thus, $\any k \in \N$, $k>K, x a_{n_k} \in I_k \Rightarrow |a_{n_k} - x|<\epsilon$.
+\end{proof}
+\textbf{The Cauchy Criterion}
+\begin{definition}
+    A sequence $\{a_n\}$ is called a Cauchy sequence if $\any \epsilon >0$, $\exist N \in \N$ such that  $\any m,n \in \N$, $m,n \geq N \Rightarrow |a_n-a_m| < \epsilon$ (OR sup $x_i$ - inf $x_j \rightarrow 0$, $i \geq N$, $j \geq N$)
+\end{definition}
+\begin{lemma}
+    Cauchy sequence is bounded.
+\end{lemma}
+\begin{proof}
+    Let $\epsilon = 1$, $\exist N$ such that $|a_n-a_N| <1$, $\any n \geq N$\\
+    Let M = max $\{a_1, a_2...a_n\}$\\
+    Then $M' = M+1$ is an upper bound of $\{a_n\}$
+\end{proof}
+\begin{theorem}
+    $\{a_n\}$ is a Cauchy sequence $\equiv \{a_n\}$ convergent
+\end{theorem}
+\begin{proof}
+    ($\Rightarrow$) \\
+    lemma + Bolzawo-Wereistrass thm. \\
+    $\exist \{a_{n_k}\}$ convergent after $n_k$.
+    Take $N_0 = max \{ n_k, N\}$, $\any n \in\N$, $|a_n - L| = |a_n - a_{n_k}| + |a_{n_k} - L| < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon$. \\
+    ($\Leftarrow$) \\
+    $|a_n -a_m| < |a_n - L | + |a_m - L | = \frac{\epsilon}{2}+\frac{\epsilon}{2} = \epsilon$.
+\end{proof}
 \end{document}
