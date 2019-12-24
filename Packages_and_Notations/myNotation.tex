@@ -7,19 +7,22 @@
 \newcommand{\exist}{\exists \hspace{0.25em}}
 \newcommand{\existonly}{\exists! \hspace{0.25em}}
 \newcommand{\any}{\forall \hspace{0.25em}}
+\renewcommand{\equiv}{\Leftrightarrow}
+\renewcommand{\iff}{\textit{iff} \hspace{0.25em}}
 
 
 %% Environment styles
 % XXX need to add more
 \newenvironment{proof}
-    {\hspace*{0.5em}\textbf{pf:} \begin{quote}}
-    {\end{quote}}
+    {\hspace*{0.5em}\textbf{\textit{pf:}} \begin{quote}}
+    {$\hfill\blacksquare$
+    
+    \end{quote}}
 \newtheorem{theorem}{Thm}[section]
 \newtheorem{corollary}{Corollary}[theorem]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{definition}{Def.}[section]
 \newtheorem{example}{E.X.}{section}
-
 
  
 
@@ -30,3 +33,4 @@
 \newcommand{\matc}[1]{\begin{bmatrix}#1\end{bmatrix}}
 % Determinant
 \renewcommand{\det}[1]{\begin{vmatrix*}[r]#1\end{vmatrix*}}
+
