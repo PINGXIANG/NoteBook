@@ -1,100 +1,144 @@
-%page 1
-\section{Series Tests}
+\begin{theorem}[Cauchy Criterion for Series]
+\begin{align}
+                          & \sum_{n=1}^\infty a_n \text{converges} \\
+    \Leftrightarrow \quad & \any \epsilon>0\text{, }\exist N \in \N\text{ s.t }\any n \geq N\text{, }\left|\sum_{k=n+1}^\infty a_k \right| < \epsilon \\
+    \Leftrightarrow \quad &\any \epsilon>0\text{, }\exist N \in \N\text{ s.t }\any n,m \geq N\text{, }\left|\sum_{k=n+1}^m a_k \right| < \epsilon
+\end{align}
+\end{theorem} 
+\begin{proof}
+    (1) $\Rightarrow$ (2)\qquad $ \left|L-S_n\right| = \left|\lim_{m\to\infty} S_m - S_n\right| = \left|\lim_{m\to\infty} \sum_{k=n+1}^m a_k\right|\\ = \left|\sum_{k=n+1}^\infty a_k\right| < \epsilon$. $\hfill\blacksquare$ \vspace{1em}\\
+    (2) $\Rightarrow$ (3) \qquad $\left|\sum_{k=n+1}^\infty a_k\right| = \left|\sum_{k=n+1}^\infty a_k - \sum_{k=m+1}^\infty a_k\right| < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon$.  $\hfill\blacksquare$ \vspace{1em}\\
+    (3) $\Rightarrow$ (1) \qquad \{$S_n$\} is Cauchy sequence, thus $S_n$ converge. 
+\end{proof}
+
+\section*{Series Tests\footnote{
+Let $\{a_n\}$ is bounded, $b_n=\sup_{k\geq n} a_k$. Then we define
+\[
+    \limsup a_n = \lim_{n \rightarrow \infty} \sup_{k\geq n} a_k.
+\]
+Similarly for $\liminf a_n$.
+}}
+
 \begin{theorem}[$n^{th}$ term test]
-\label{$n_th$ term test}
-    If $\sum_{n=1}^\infty a_n$ converges, then $\lim_{n\to\infty} a_n = 0$ ($a_n = \frac{1}{n}$).
+\label{n_th term test}
+    If $\sum_{n=1}^\infty a_n$ converges, then $\lim_{n\to\infty} a_n = 0$.
 \end{theorem}
 \begin{proof}
     $\lim_{n\to\infty} a_n = \lim_{n\to\infty} (S_n -S_{n-1}) = L -L =0$
 \end{proof}
+\begin{example}
+    (Counter-example) $a_n = \frac{1}{n}$.
+\end{example}
+
 \begin{theorem}[Comparison Test]
 \label{Comparison Test}
-     $|a_n| \leq b_n, \any n \geq 1$, \\
- $$\begin{cases}
+     $|a_n| \leq b_n, \any n \geq 1$, 
+ \[
+ \begin{cases}
         \text{If $\sum_{n=1}^\infty b_n$ converges, then $\sum_{n=1}^\infty a_n$ converges and $\left|\sum_{n=1}^\infty a_n \right| < \sum_{n=1}^\infty$}. \\
         \text {If $\sum_{n=1}^\infty a_n$ diverges, then $\sum_{n=1}^\infty b_n$ diverges.}
-    \end{cases} $$
+    \end{cases}
+\]    
 \end{theorem}
 \begin{proof}
-    $\left|\sum_{k=n+1}^\infty a_n \right| \leq \sum_{k=n+1}^\infty |a_n| \leq \sum_{k=n+1}^\infty b_n$ since $\sum_{k=n+1}^\infty b_n$ is Cauchy, given $\epsilon > 0$, $\any n,m \in \N$, $\sum_{k=n+1}^\infty b_n <\epsilon$,
+    $\left|\sum_{k=n+1}^\infty a_n \right| \leq \sum_{k=n+1}^\infty |a_n| \leq \sum_{k=n+1}^\infty b_n$ since $\sum_{k=n+1}^\infty b_n$ is Cauchy, given $\epsilon > 0$, $\any n,m \in \N$, $\sum_{k=n+1}^\infty b_n <\epsilon$.
 \end{proof}
+
 \begin{theorem}[Root Test]
 \label{Root Test}
     $a_n \geq 0$, $\any n \in \N$, $l = \lim$  sup$\sqrt[n]{a_n}$ ($a_n \equiv 1$).
-    $$\begin{cases}
+\[    
+    \begin{cases}
         \text{If } l <1 \text{, then} \sum_{n=1}^\infty a_n \text{ converges.} \\
         \text{If } l > 1 \text{, then} \sum_{n=1}^\infty a_n \text{diverges.}
-    \end{cases}$$
+    \end{cases}
+\]
 \end{theorem}
 \begin{proof}
     Let $0<\epsilon<1-l$ be given. \\
-    Since $l=\lim_{n\to\infty}$ sup$\sqrt[k]{a_k}$ ($k \geq n$), i.e. $\any \epsilon > 0$, $\exist N \in \N$ s.t $\any n > N \Rightarrow |sup a_k^{\frac{1}{k}} - l| < \epsilon$ ($k\geq n$), $l-\epsilon < sup a_k^\frac{1}{k} < \epsilon + l < 1$ ($1\geq a_n^\frac{1}{n}$), 
-    thus $\sqrt[n]{a_n} \leq sup\sqrt[k]{a_k} < l + \epsilon <1$, $\any n \in \N, n >N$, then $a_n \leq r^n$, $r=l + \epsilon < 1$.
+    Since $l=\lim_{n\to\infty}$ sup$\sqrt[k]{a_k}$ ($k \geq n$), i.e. 
+    \[
+    \any \epsilon > 0, \exist N \in \N s.t \any n > N \Rightarrow |\sup_{k\geq n} a^{\frac{1}{k}}_k - l| < \epsilon,
+    \]
+    we have
+    \[
+    l-\epsilon < sup a_k^\frac{1}{k} < \epsilon + l < 1 , 1\geq a_n^\frac{1}{n},
+    \]
+    where $\sup_{k\geq n} a_k^{1/k} \geq a_k^{1/k}$ and $\epsilon + l < 1$. Thus,
+    \[
+    \sqrt[n]{a_n} \leq sup\sqrt[k]{a_k} < l + \epsilon <1, \any n \in \N, n >N.
+    \]
+    That is, $a_n \leq r^n$, $r=l + \epsilon < 1$.
 \end{proof}
+
 \begin{theorem}[Limit Comparison Test]
 \label{Limit Comparison Test}
-    If $b_n \geq 0$, \emph{$\any n \in \N$} and $\lim$ sup$\frac{|a_n|}{b_n} < \infty$ and $\sum_{n=1}^\infty b_n$ converge, then $\sum_{n=1}^\infty$ converge.
+    If $b_n \geq 0$, \uwave{$\any n \in \N$} and $\lim$ sup$\frac{|a_n|}{b_n} < \infty$ and $\sum_{n=1}^\infty b_n$ converge, then $\sum_{n=1}^\infty$ converge.
 \end{theorem}
+
 \begin{theorem}[Integral Test]
 \label{Integral Test}
     $f(x)>0$, monotone $\downarrow$ on $[x_0, \infty)$, $\sum_{n=1}^\infty f(n)$ converge $\Leftrightarrow \int_1^\infty f(x)$ converge.
 \end{theorem}
+
 \begin{theorem}[Ratio Test]
 \label{Ratio Test}
-    $a_n \geq0$, \emph{$\any n \in \N$},
+    $a_n \geq0$, \uwave{$\any n \in \N$},
     $$\begin{cases}
         \text{If }\lim \text{sup} \frac{a_{n+1}}{a_n} <1 \text{, then } \sum_{n=1}^\infty a_n \text{ converge}.\\
         \text{If }\lim \text{sup} \frac{a_{n+1}}{a_n} >1 \text{, then } \sum_{n=1}^\infty a_n \text{ diverge}.
     \end{cases}$$
 \end{theorem}
-% page 2
-Cauchy Criterion for Series \\
-\begin{equation}
-   \sum_{n=1}^\infty a_n \text{converges}  
-\end{equation}
-\begin{equation}
-    \Leftrightarrow \any \epsilon>0\text{, }\exist N \in \N\text{ s.t }\any n \geq N\text{, }\left|\sum_{k=n+1}^\infty a_k \right| < \epsilon
-\end{equation}
-\begin{equation}
-    \Leftrightarrow \any \epsilon>0\text{, }\exist N \in \N\text{ s.t }\any n,m \geq N\text{, }\left|\sum_{k=n+1}^m a_k \right| < \epsilon
-\end{equation}
-\begin{proof}
-    (1) $\Rightarrow$ (2)\qquad $ \left|L-S_n\right| = \left|\lim_{m\to\infty} S_m - S_n\right| = \left|\lim_{m\to\infty} \sum_{k=n+1}^m a_k\right|\\ = \left|\sum_{k=n+1}^\infty a_k\right| < \epsilon$.
-\end{proof}
-\begin{proof}
-    (2) $\Rightarrow$ (3) \qquad $\left|\sum_{k=n+1}^\infty a_k\right| = \left|\sum_{k=n+1}^\infty a_k - \sum_{k=m+1}^\infty a_k\right| < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon$.
-\end{proof}
-\begin{proof}
-    (3) $\Rightarrow$ (1) \qquad \{$S_n$\} is Cauchy sequence, thus $S_n$ converge.
-\end{proof}
+
 \begin{theorem}[Alternative Series Test]
 \label{Alternative Series Test}
-    $a_n$ monotonously  $\downarrow$,  $\lim_{n\to\infty} a_n =0 \Rightarrow \sum_{n=1}^\infty (-1)^n a_n$ \\converge ($\sum_{n=1}^\infty \frac{(-1)^{n-1}}{n} = ln2$).
+    If $a_n$ monotonously  $\downarrow$ and  $\lim_{n\to\infty} a_n =0$ then $\sum_{n=1}^\infty (-1)^n a_n$ converge. 
 \end{theorem}
+\begin{proof}
+    Take $I_n = [S_{2n+2}, S_{2n+1}]$, it is nested. Thus, by Nested Interval Theorem \ref{Nested Interval Theorem}, $\bigcap\limits_{n=1}^{\infty} I_n \neq \emptyset$ and $len(I_n) = a_{2n+2} \rightarrow 0$.
+\end{proof}
+\begin{example}
+    Taylor Series $\sum_{n=1}^\infty \cfrac{(-1)^{n-1}}{n} = \ln 2$.
+\end{example}    
+
+
 \section{Topology in $\R$}
 \begin{definition}
     $V_\epsilon (X) = \{ a \in \R \bigl| |a-x| < \epsilon \} = (x-\epsilon, x+ \epsilon)$.
 \end{definition}
 \begin{definition}
-    $I \in \R$ is \underline{open} if $\any x \in I$, $\exist \epsilon>0$ s.t $V_\epsilon (X) \subseteq I$.
+    $I \in \R$ is \uline{open} if $\any x \in I$, $\exist \epsilon>0$ s.t $V_\epsilon (X) \subseteq I$.
 \end{definition}
+
+\begin{theorem} \hspace{1em}
+\begin{enumerate}
+    \item Any union of open sets is open.
+    \item Any \uwave{finite} intersection of open sets is open.
+\end{enumerate}
+\end{theorem}
 \begin{proof}
-    (1) Let $I_\alpha$ be open, $\any \alpha \in A$, $I = \bigcup\limits_{\alpha \in A} I_\alpha$, \\
-    $x \in I \Rightarrow x \in I_\alpha$, for some $\alpha \in A$, so, $\exist \epsilon >0$ s.t $V_\epsilon (x) \subseteq I_\alpha \subseteq I$. \\
-    (2) Let $I_\alpha$ be open, $\alpha \in \{1,2,...,n\}$, let $\epsilon = min\{ \epsilon_1,...,\epsilon_n\},$ \\
-    $V_\epsilon (x) \subseteq V_{\epsilon i} (x)\subseteq I_\alpha$, $\any i \Rightarrow V_\epsilon (X) \subseteq I$.
+    (1) Let $I_\alpha$ be open, $\any \alpha \in A$, $I = \bigcup\limits_{\alpha \in A} I_\alpha$, $x \in I \Rightarrow x \in I_\alpha$, for some $\alpha \in A$. \\
+    Thus, $\exist \epsilon >0$ s.t $V_\epsilon (x) \subseteq I_\alpha \subseteq I$. $\hfill\blacksquare$ \\
+    (2) Let $I_\alpha$ be open, $\alpha \in \{1,2,...,n\}$, let $\epsilon = min\{ \epsilon_1,...,\epsilon_n\}$, we have $V_\epsilon (x) \subseteq V_{\epsilon i} (x)\subseteq I_\alpha$, $\any i \Rightarrow V_\epsilon (X) \subseteq I$.
 \end{proof}
+
 \begin{definition}
-    x is a \underline{limit point of A} if $\any \epsilon > 0$, $V_\epsilon(\infty \cap A) \setminus	 \{x\} \neq \emptyset$, $a_n \neq x$
+    x is a \uline{limit point of A} if $\any \epsilon > 0$, $V_\epsilon(\epsilon \cap A) \setminus \{x\} \neq \emptyset$, $a_n \neq x$.
 \end{definition}
 \begin{theorem}
-    x is a LP of A \Leftrightarrow $\exist \{ a_n \}_{n=1}^\infty \subseteq A$ s.t $a_n \neq x$, $\any n \in \N$, and $\lim_{n\to\infty} a_n = x$.
+    x is a LP of $\mathcal{A}$ $\Leftrightarrow \exist \{ a_n \}_{n=1}^\infty \subseteq \mathcal{A}$ s.t $a_n \neq x$, $\any n \in \N$, and $\lim_{n\to\infty} a_n = x$.
 \end{theorem}
+\begin{proof}
+    ($\Rightarrow$) \\
+    Let $\epsilon_n = \frac{1}{n}$, and form a sequence {$a_n$} by picking $a_n \in V_{\epsilon}(x)\cap\mathcal{A}$. \\
+    ($\Leftarrow$) \\
+    By definition, $\any \epsilon > 0$, we have $V_\epsilon(\epsilon_n \cap A) \setminus \{x\} \neq \emptyset$.
+\end{proof}
 \begin{definition}
-    $A \subseteq \R$ is cloused if $\any x$ be a LP of A, $x \in A$.
+    $A \subseteq \R$ is closed if $\any x$ be a LP of A, $x \in A$.
 \end{definition}
 \begin{definition}
-    x is an \underline{isolated point} of A if it is not a LP of A.
+    x is an \uline{isolated point} of A if it is not a L.P. of A.
 \end{definition}
 \begin{theorem}
     $\any x \in \R$, $\exist \{a_n\} \subseteq \Q$ s.t $\lim_{n\to\infty} a_n = x$ ("$\Q$ is dense in $\R$").
@@ -105,15 +149,22 @@ Cauchy Criterion for Series \\
     $\Rightarrow |x-\epsilon_n| < \frac{2}{n} \rightarrow 0 \Rightarrow \lim_{n\to\infty} a_n =x$.
 \end{proof}
 \begin{definition}
-    A set $k\subseteq \R$ is \underline{compact} if $\any \{a_n\} \subseteq k$, $\exist \{ a_{n_k} \} \subseteq\{a_n\}$ s.t $\lim_{k\to\infty} a_{n_k} = L \in K$.
+    A set $K \subseteq \R$ is \uline{compact} if $\any \{a_n\} \subseteq k$, $\exist \{ a_{n_k} \} \subseteq\{a_n\}$ s.t $\lim_{k\to\infty} a_{n_k} = L \in K$.
 \end{definition}
 \begin{theorem}
-    A set K is compact $\Leftrightarrow$ K is closed and bounded.
+    A set $K$ is compact $\Leftrightarrow$ K is closed and bounded.
 \end{theorem}
-\begin{theorem}[Nested Compact Set Property]
+\begin{proof}
+    ($\Rightarrow$)\\
+    Assume $K$ is not bounded, then $\exist x_n \in K$ s.t, $x_n \notin (-n,n)$. Thus \{$x_n$\} diverge. \\
+    Assume $K$ is not closed, then $\exist x \notin K$ but a L.P. of $K$.Thus $\lim x_n = x$. Take the subsequence of it. \\
+    ($\Leftarrow$) \\
+    Exercise.
+\end{proof}
+
+\begin{theorem}[Nested Compact Set Property]\footnote{The difference between Nested Interval Theorem \ref{Nested Interval Theorem} is that $K$ could be a non-interval.}
 \label{Nested Compact Set Property} 
-    % 与 nested interval theorem的不同，K可以不是interval.
-    If $K_1 \supseteq K_2 \supseteq...$ is a nested sequence, $\any i \in \N$, $K_i$ is compact and non-empty, then $\bigcap\limits_{i=1}^\infty K_i \neq \emptyset$
+    If $K_1 \supseteq K_2 \supseteq...$ is a nested sequence, $\any i \in \N$, $K_i$ is compact and non-empty, then $\bigcap\limits_{i=1}^\infty K_i \neq \emptyset$.
 \end{theorem}
 \begin{proof}
     Pick $x_1 \in K_1$, $x_2 \in K_2 ...$ then, we obtain a sequence $\{ x_n\}$ of pts, and $\any i \in \N$, $\{x_n\}_{n=i}^\infty \subseteq K_i$ \\
@@ -128,21 +179,22 @@ Cauchy Criterion for Series \\
 \end{definition}
 \begin{theorem}[Heine-Borel Theorem]
 \label{Heine-Borel Theorem}
-    det $K \subseteq \R$, then: \\
+    Let $K \subseteq \R$, then: \\
     \indent K is compact \\
     $\Leftrightarrow$ K is closed and bounded \\
     $\Leftrightarrow \any$ an open cover $O_c$ of k, $O_c$ has a finite subcover.
 \end{theorem}
+% XXX
+
 \begin{theorem}
-    $E \subseteq \R$ is connected  $\Leftrightarrow$ "$\any A,B \neq \emptyset$, $A \cap B = \emptyset$, if $E = A \cup B$, then $\exist \{ x_n \} \in A$ (or B) s.t $\{ x_n \} \rightarrow x \in B$ (or A)."\\
-    \indent \indent \indent \indent \indent \indent \indent \indent$\Leftrightarrow$ "$\any a,b,c \in \R$, $a<c<b$, if $a,b \in E$, then $c \in E$."
+    $E \subseteq \R$ is connected  $\Leftrightarrow$ $\any A,B \neq \emptyset$, $A \cap B = \emptyset$, if $E = A \cup B$, then $\exist \{ x_n \} \in A$ (or B) s.t $\{ x_n \} \rightarrow x \in B$ (or A).\\
+    \indent \indent \indent \indent \indent \indent \indent \indent$\Leftrightarrow$ $\any a,b,c \in \R$, $a<c<b$, if $a,b \in E$, then $c \in E$.
 \end{theorem}
 \begin{proof}
     (i) $\Rightarrow$ (iii) \\
-    Let $A =  (-\infty, C) \cap E \ni a$, $B = (C, +\infty) \cap E \ni b$, and A, B separated. Since E is connected, E $\neq A \cup B = R \cap E \setminus \{C\} \Rightarrow C \in E$
-\end{proof}
-\begin{proof}
-    \begin{tikzpicture}[scale=1]
+    Let $A =  (-\infty, C) \cap E \ni a$, $B = (C, +\infty) \cap E \ni b$, and A, B separated. Since E is connected, E $\neq A \cup B = R \cap E \setminus \{C\} \Rightarrow C \in E$. $\hfill\blacksquare$
+
+\begin{tikzpicture}[scale=1]
 \coordinate (P) at (0, 0);
 \coordinate (A) at (1, 0);
 \coordinate (B) at (2, 0);
@@ -160,15 +212,19 @@ Cauchy Criterion for Series \\
     (iii) $\Rightarrow$ (ii)\\
     Let $A, B \neq \emptyset$, $A \cap B = \emptyset$, $E = A \cup B$. \\
     Let $a_0 \in A$, $b_0 \in B$, then $a_0<c_0<b_0$. \\
-    Let $a_1 \in A$, $a_1>a_0$, $b_1 \in B$, $b_1<b_0$, choose $c_1$ divide $[a_1,b_1]$ into half. Thus, we get: \\
-    $I_1 \supseteq I_2 \supseteq...\supseteq I_n \supseteq...$\\
-    Then, $\bigcap\limits_{i=1}^\infty I_i \neq \emptyset$, since %看不清 
-    ($I_1$) $\rightarrow 0$, $\existonly c \in \bigcap\limits_{i=1}^\infty I_i$ and $c_n \rightarrow c \in E$ (not enough), \\
-    \textcircled{1} Suppose $c \in A$ then $\{b_n\} \subseteq B$, $b_n \rightarrow c$\\
-    \textcircled{2} Suppose $c \in B$ then $\{a_n\} \subseteq A$, $a_n \rightarrow c$ \\
-    $\Rightarrow$ either $A\cap B = \emptyset$ or $B \cap A = \emptyset \Rightarrow$ E must be connected.
+    Let $a_1 \in A$, $a_1>a_0$, $b_1 \in B$, $b_1<b_0$, choose $c_1$ divide $[a_1,b_1]$ into half. Thus, we get
+    \[
+        I_1 \supseteq I_2 \supseteq...\supseteq I_n \supseteq...
+    \]
+    Then, $\bigcap\limits_{i=1}^\infty I_i \neq \emptyset$, since $len(I_n) \rightarrow 0, \existonly c \in \bigcap\limits_{i=1}^\infty I_i$ and $c_n \rightarrow c \in E$ (not enough). We have 
+    \begin{enumerate}
+        \item Suppose $c \in A$ then $\{b_n\} \subseteq B$, $b_n \rightarrow c$;
+        \item Suppose $c \in B$ then $\{a_n\} \subseteq A$, $a_n \rightarrow c$.$\hfill\blacksquare$
+    \end{enumerate} 
+    Either $A\cap B = \emptyset$ or $B \cap A = \emptyset \Rightarrow$ E must be connected.
 \end{proof}
 \begin{definition}
+\label{Cantor set}
     Cantor set $[ G = \bigcap\limits_{n=1}^\infty S_n]$ \\
     $S_0 = [0,1]$\\
     $S_1 = [0,\frac{1}{3}]\cup [\frac{2}{3},1]$\\
@@ -176,6 +232,7 @@ Cauchy Criterion for Series \\
     $\vdots$ \\
     $\Rightarrow$ (1)  $\bigcap\limits_{n=1}^\infty S_n$ is compact. (2) $\bigcap\limits_{n=1}^\infty S_n$ measure zero. (3) $\#\bigcap\limits_{n=1}^\infty S_n = \infty$ uncountable. (4) Int $\bigcap\limits_{n=1}^\infty S_n = \emptyset$ (Int = (open) interval (e.x. Int $[a,b] =(a,b)$). %反证 
     (5) G is a \uwave{perfect set}.
+    %XXX
 \end{definition}
 \begin{proof}
     (5) Let $x \in G$ \\
