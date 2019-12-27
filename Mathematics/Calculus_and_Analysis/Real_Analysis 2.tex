@@ -7,7 +7,7 @@
 \end{theorem} 
 \begin{proof}
     (1) $\Rightarrow$ (2)\qquad $ \left|L-S_n\right| = \left|\lim_{m\to\infty} S_m - S_n\right| = \left|\lim_{m\to\infty} \sum_{k=n+1}^m a_k\right|\\ = \left|\sum_{k=n+1}^\infty a_k\right| < \epsilon$. $\hfill\blacksquare$ \vspace{1em}\\
-    (2) $\Rightarrow$ (3) \qquad $\left|\sum_{k=n+1}^\infty a_k\right| = \left|\sum_{k=n+1}^\infty a_k - \sum_{k=m+1}^\infty a_k\right| < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon$.  $\hfill\blacksquare$ \vspace{1em}\\
+    (2) $\Rightarrow$ (3) \qquad $\left|\sum_{k=n+1}^\infty a_k\right| = \left|\sum_{k=n+1}^\infty a_k - \sum_{k=m+1}^\infty a_k\right| < \cfrac{\epsilon}{2} + \cfrac{\epsilon}{2} = \epsilon$.  $\hfill\blacksquare$ \vspace{1em}\\
     (3) $\Rightarrow$ (1) \qquad \{$S_n$\} is Cauchy sequence, thus $S_n$ converge. 
 \end{proof}
 
@@ -27,7 +27,7 @@ Similarly for $\liminf a_n$.
     $\lim_{n\to\infty} a_n = \lim_{n\to\infty} (S_n -S_{n-1}) = L -L =0$
 \end{proof}
 \begin{example}
-    (Counter-example) $a_n = \frac{1}{n}$.
+    (Counter-example) $a_n = \cfrac{1}{n}$.
 \end{example}
 
 \begin{theorem}[Comparison Test]
@@ -46,7 +46,7 @@ Similarly for $\liminf a_n$.
 
 \begin{theorem}[Root Test]
 \label{Root Test}
-    $a_n \geq 0$, $\any n \in \N$, $l = \lim$  sup$\sqrt[n]{a_n}$ ($a_n \equiv 1$).
+    $a_n \geq 0$, $\any n \in \N$, $l = \limsup \sqrt[n]{a_n}$ ($a_n \equiv 1$).
 \[    
     \begin{cases}
         \text{If } l <1 \text{, then} \sum_{n=1}^\infty a_n \text{ converges.} \\
@@ -56,24 +56,24 @@ Similarly for $\liminf a_n$.
 \end{theorem}
 \begin{proof}
     Let $0<\epsilon<1-l$ be given. \\
-    Since $l=\lim_{n\to\infty}$ sup$\sqrt[k]{a_k}$ ($k \geq n$), i.e. 
+    Since $l=\lim_{n\to\infty} \sup_{k \geq n} \sqrt[k]{a_k}$, i.e. 
     \[
-    \any \epsilon > 0, \exist N \in \N s.t \any n > N \Rightarrow |\sup_{k\geq n} a^{\frac{1}{k}}_k - l| < \epsilon,
+    \any \epsilon > 0, \exist N \in \N s.t \any n > N \Rightarrow |\sup_{k\geq n} a^{1/k}_k - l| < \epsilon,
     \]
     we have
     \[
-    l-\epsilon < sup a_k^\frac{1}{k} < \epsilon + l < 1 , 1\geq a_n^\frac{1}{n},
+    l-\epsilon < \sup a_k^{1/k} < \epsilon + l < 1 , 1\geq a_n^{1/n},
     \]
     where $\sup_{k\geq n} a_k^{1/k} \geq a_k^{1/k}$ and $\epsilon + l < 1$. Thus,
     \[
-    \sqrt[n]{a_n} \leq sup\sqrt[k]{a_k} < l + \epsilon <1, \any n \in \N, n >N.
+    \sqrt[n]{a_n} \leq \sup\sqrt[k]{a_k} < l + \epsilon <1, \any n \in \N, n >N.
     \]
     That is, $a_n \leq r^n$, $r=l + \epsilon < 1$.
 \end{proof}
 
 \begin{theorem}[Limit Comparison Test]
 \label{Limit Comparison Test}
-    If $b_n \geq 0$, \uwave{$\any n \in \N$} and $\lim$ sup$\frac{|a_n|}{b_n} < \infty$ and $\sum_{n=1}^\infty b_n$ converge, then $\sum_{n=1}^\infty$ converge.
+    If $b_n \geq 0$, \uwave{$\any n \in \N$} and $\lim \sup \frac{|a_n|}{b_n} < \infty$ and $\sum_{n=1}^\infty b_n$ converge, then $\sum_{n=1}^\infty$ converge.
 \end{theorem}
 
 \begin{theorem}[Integral Test]
@@ -84,10 +84,10 @@ Similarly for $\liminf a_n$.
 \begin{theorem}[Ratio Test]
 \label{Ratio Test}
     $a_n \geq0$, \uwave{$\any n \in \N$},
-    $$\begin{cases}
-        \text{If }\lim \text{sup} \frac{a_{n+1}}{a_n} <1 \text{, then } \sum_{n=1}^\infty a_n \text{ converge}.\\
-        \text{If }\lim \text{sup} \frac{a_{n+1}}{a_n} >1 \text{, then } \sum_{n=1}^\infty a_n \text{ diverge}.
-    \end{cases}$$
+    \[\begin{cases}
+        \text{If }\limsup \cfrac{a_{n+1}}{a_n} <1 \text{, then } \sum_{n=1}^\infty a_n \text{ converge}.\\
+        \text{If }\limsup \cfrac{a_{n+1}}{a_n} >1 \text{, then } \sum_{n=1}^\infty a_n \text{ diverge}.
+    \end{cases}\]
 \end{theorem}
 
 \begin{theorem}[Alternative Series Test]
@@ -104,10 +104,10 @@ Similarly for $\liminf a_n$.
 
 \section{Topology in $\R$}
 \begin{definition}
-    $V_\epsilon (X) = \{ a \in \R \bigl| |a-x| < \epsilon \} = (x-\epsilon, x+ \epsilon)$.
+    $\mathcal{V}_\epsilon (x) = \{ a \in \R \bigl| |a-x| < \epsilon \} = (x-\epsilon, x+ \epsilon)$.
 \end{definition}
 \begin{definition}
-    $I \in \R$ is \uline{open} if $\any x \in I$, $\exist \epsilon>0$ s.t $V_\epsilon (X) \subseteq I$.
+    $I \in \R$ is \uline{open} if $\any x \in I$, $\exist \epsilon>0$ s.t $\mathcal{V}_\epsilon (x) \subseteq I$.
 \end{definition}
 
 \begin{theorem} \hspace{1em}
@@ -117,82 +117,91 @@ Similarly for $\liminf a_n$.
 \end{enumerate}
 \end{theorem}
 \begin{proof}
-    (1) Let $I_\alpha$ be open, $\any \alpha \in A$, $I = \bigcup\limits_{\alpha \in A} I_\alpha$, $x \in I \Rightarrow x \in I_\alpha$, for some $\alpha \in A$. \\
-    Thus, $\exist \epsilon >0$ s.t $V_\epsilon (x) \subseteq I_\alpha \subseteq I$. $\hfill\blacksquare$ \\
-    (2) Let $I_\alpha$ be open, $\alpha \in \{1,2,...,n\}$, let $\epsilon = min\{ \epsilon_1,...,\epsilon_n\}$, we have $V_\epsilon (x) \subseteq V_{\epsilon i} (x)\subseteq I_\alpha$, $\any i \Rightarrow V_\epsilon (X) \subseteq I$.
+    (1) Let $I_\alpha$ be open, 
+    \[
+    \any \alpha \in \mathcal{A}, I = \bigcup\limits_{\alpha \in A} I_\alpha, x \in I \Rightarrow x \in I_\alpha, \text{for some } \alpha \in \mathcal{A}.
+    \] \\
+    Thus, $\exist \epsilon >0$ s.t $\mathcal{V}_\epsilon (x) \subseteq I_\alpha \subseteq I$. $\hfill\blacksquare$ \\
+    (2) Let $I_\alpha$ be open, $\alpha \in \{1,2,...,n\}$, let $\epsilon = min\{ \epsilon_1,...,\epsilon_n\}$, we have 
+    \[
+    \mathcal{V}_\epsilon (x) \subseteq \mathcal{V}_{\epsilon i} (x)\subseteq I_\alpha, \any i \Rightarrow \mathcal{V}_\epsilon (x) \subseteq I.
+    \]
 \end{proof}
 
 \begin{definition}
-    x is a \uline{limit point of A} if $\any \epsilon > 0$, $V_\epsilon(\epsilon \cap A) \setminus \{x\} \neq \emptyset$, $a_n \neq x$.
+    x is a \uline{limit point of $\mathcal{A}$} if $\any \epsilon > 0$, $V_\epsilon(\epsilon \cap \mathcal{A}) \setminus \{x\} \neq \emptyset$, $a_n \neq x$.
 \end{definition}
 \begin{theorem}
-    x is a LP of $\mathcal{A}$ $\Leftrightarrow \exist \{ a_n \}_{n=1}^\infty \subseteq \mathcal{A}$ s.t $a_n \neq x$, $\any n \in \N$, and $\lim_{n\to\infty} a_n = x$.
+    x is a L.P. of $\mathcal{A}$ $\Leftrightarrow \exist \{ a_n \}_{n=1}^\infty \subseteq \mathcal{A}$ s.t $a_n \neq x$, $\any n \in \N$, and $\lim_{n\to\infty} a_n = x$.
 \end{theorem}
 \begin{proof}
     ($\Rightarrow$) \\
-    Let $\epsilon_n = \frac{1}{n}$, and form a sequence {$a_n$} by picking $a_n \in V_{\epsilon}(x)\cap\mathcal{A}$. \\
+    Let $\epsilon_n = \cfrac{1}{n}$, and form a sequence {$a_n$} by picking $a_n \in V_{\epsilon}(x)\cap\mathcal{A}$. \\
     ($\Leftarrow$) \\
-    By definition, $\any \epsilon > 0$, we have $V_\epsilon(\epsilon_n \cap A) \setminus \{x\} \neq \emptyset$.
+    By definition, $\any \epsilon > 0$, we have $V_\epsilon(\epsilon_n \cap \mathcal{A}) \setminus \{x\} \neq \emptyset$.
 \end{proof}
 \begin{definition}
-    $A \subseteq \R$ is closed if $\any x$ be a LP of A, $x \in A$.
+    $\mathcal{A} \subseteq \R$ is closed if $\any x$ be a L.P. of $\mathcal{A}$, $x \in \mathcal{A}$.
 \end{definition}
 \begin{definition}
-    x is an \uline{isolated point} of A if it is not a L.P. of A.
+    x is an \uline{isolated point} of $\mathcal{A}$ if it is not a L.P. of $\mathcal{A}$.
 \end{definition}
 \begin{theorem}
     $\any x \in \R$, $\exist \{a_n\} \subseteq \Q$ s.t $\lim_{n\to\infty} a_n = x$ ("$\Q$ is dense in $\R$").
 \end{theorem}
 \begin{proof}
     $\any u,v \in \R$, $u<v$, $\exist\epsilon \in \Q$, $u<\epsilon<v$ \\
-    $\Rightarrow \any n\in \N$, $\exist q_n \in \Q$, $x-\frac{1}{n} < q_n <x+ \frac{1}{n}$\\
-    $\Rightarrow |x-\epsilon_n| < \frac{2}{n} \rightarrow 0 \Rightarrow \lim_{n\to\infty} a_n =x$.
+    $\Rightarrow \any n\in \N$, $\exist q_n \in \Q$, $x-\cfrac{1}{n} < q_n <x+ \cfrac{1}{n}$\\
+    $\Rightarrow |x-\epsilon_n| < \cfrac{2}{n} \rightarrow 0 \Rightarrow \lim_{n\to\infty} a_n =x$.
 \end{proof}
 \begin{definition}
-    A set $K \subseteq \R$ is \uline{compact} if $\any \{a_n\} \subseteq k$, $\exist \{ a_{n_k} \} \subseteq\{a_n\}$ s.t $\lim_{k\to\infty} a_{n_k} = L \in K$.
+    A set $\mathcal{K} \subseteq \R$ is \uline{compact} if $\any \{a_n\} \subseteq \mathcal{K}$, $\exist \{ a_{n_k} \} \subseteq\{a_n\}$ s.t $\lim_{k\to\infty} a_{n_k} = L \in \mathcal{K}$.
 \end{definition}
 \begin{theorem}
-    A set $K$ is compact $\Leftrightarrow$ K is closed and bounded.
+    A set $\mathcal{K}$ is compact $\Leftrightarrow$ $\mathcal{K}$ is closed and bounded.
 \end{theorem}
 \begin{proof}
     ($\Rightarrow$)\\
-    Assume $K$ is not bounded, then $\exist x_n \in K$ s.t, $x_n \notin (-n,n)$. Thus \{$x_n$\} diverge. \\
-    Assume $K$ is not closed, then $\exist x \notin K$ but a L.P. of $K$.Thus $\lim x_n = x$. Take the subsequence of it. \\
+    Assume $\mathcal{K}$ is not bounded, then $\exist x_n \in \mathcal{K}$ s.t, $x_n \notin (-n,n)$. Thus \{$x_n$\} diverge. \\
+    Assume $\mathcal{K}$ is not closed, then $\exist x \notin \mathcal{K}$ but a L.P. of $\mathcal{K}$.Thus $\lim x_n = x$. Take the subsequence of it. \\
     ($\Leftarrow$) \\
     Exercise.
 \end{proof}
 
 \begin{theorem}[Nested Compact Set Property]\footnote{The difference between Nested Interval Theorem \ref{Nested Interval Theorem} is that $K$ could be a non-interval.}
 \label{Nested Compact Set Property} 
-    If $K_1 \supseteq K_2 \supseteq...$ is a nested sequence, $\any i \in \N$, $K_i$ is compact and non-empty, then $\bigcap\limits_{i=1}^\infty K_i \neq \emptyset$.
+    If $\mathcal{K}_1 \supseteq \mathcal{K}_2 \supseteq...$ is a nested sequence, $\any i \in \N$, $\mathcal{K}_i$ is compact and non-empty, then $\bigcap\limits_{i=1}^\infty \mathcal{K}_i \neq \emptyset$.
 \end{theorem}
 \begin{proof}
-    Pick $x_1 \in K_1$, $x_2 \in K_2 ...$ then, we obtain a sequence $\{ x_n\}$ of pts, and $\any i \in \N$, $\{x_n\}_{n=i}^\infty \subseteq K_i$ \\
-    Since $K_1$ is compact, $\{x_n\} \subseteq K_1$, $\exist\{x_{n_k}\}$ s.t $\lim_{k\to\infty} x_{n_k} = x \in K_1$. Elimary some first few terms, $\{x_{n_k}\}_{k=j}^\infty \in K_i$, $\any i \in \N$. \\
-    Since $\{x_{n_k}\}_{k=j}^\infty \in K_i \rightarrow x$, subsequence of it $\rightarrow x \in K_i$, $\any i \in \N$.
+    Pick $x_1 \in \mathcal{K}_1$, $x_2 \in \mathcal{K}_2 ...$ then, we obtain a sequence $\{ x_n\}$ of pts, and $\any i \in \N$, $\{x_n\}_{n=i}^\infty \subseteq \mathcal{K}_i$. \\
+    Since $\mathcal{K}_1$ is compact, $\{x_n\} \subseteq \mathcal{K}_1$, $\exist\{x_{n_k}\}$ s.t $\lim_{k\to\infty} x_{n_k} = x \in \mathcal{K}_1$. Elimary some first few terms, $\{x_{n_k}\}_{k=j}^\infty \in \mathcal{K}_i$, $\any i \in \N$. \\
+    Since $\{x_{n_k}\}_{k=j}^\infty \in \mathcal{K}_i \rightarrow x$, subsequence of it $\rightarrow x \in \mathcal{K}_i$, $\any i \in \N$.
 \end{proof}
 \begin{definition}
-    $A \in \R$, an \underline{open cover} for A is a (possibly \uwave{infinite}) collection of open sets $\{a_\lambda | \lambda \in \Lambda\}$ s.t $A \subseteq U_{\lambda \in \Lambda} O_\lambda$.
+    $\mathcal{A} \subseteq \R$, an \uline{open cover} for $\mathcal{A}$ is a (possibly \uwave{infinite}) collection of open sets $\{a_\lambda | \lambda \in \Lambda\}$ s.t $\mathcal{A} \subseteq U_{\lambda \in \Lambda} O_\lambda$.
 \end{definition}
 \begin{definition}
-    Given an open cover for A, a \underline{finite subcover} is a finite collection of open sets from the original open cover whose union still completely contains A.
+    Given an open cover for $\mathcal{A}$, a \uline{finite subcover} is a finite collection of open sets from the original open cover whose union still completely contains $\mathcal{A}$.
 \end{definition}
 \begin{theorem}[Heine-Borel Theorem]
 \label{Heine-Borel Theorem}
-    Let $K \subseteq \R$, then: \\
-    \indent K is compact \\
-    $\Leftrightarrow$ K is closed and bounded \\
-    $\Leftrightarrow \any$ an open cover $O_c$ of k, $O_c$ has a finite subcover.
+    Let $\mathcal{K} \subseteq \R$, then: \\
+    \indent $\mathcal{K}$ is compact \\
+    $\Leftrightarrow$ $\mathcal{K}$ is closed and bounded \\
+    $\Leftrightarrow \any$ an open cover $O_c$ of $\mathcal{K}$, $O_c$ has a finite subcover.
 \end{theorem}
 % XXX
 
 \begin{theorem}
-    $E \subseteq \R$ is connected  $\Leftrightarrow$ $\any A,B \neq \emptyset$, $A \cap B = \emptyset$, if $E = A \cup B$, then $\exist \{ x_n \} \in A$ (or B) s.t $\{ x_n \} \rightarrow x \in B$ (or A).\\
-    \indent \indent \indent \indent \indent \indent \indent \indent$\Leftrightarrow$ $\any a,b,c \in \R$, $a<c<b$, if $a,b \in E$, then $c \in E$.
+    $\mathcal{E} \subseteq \R$ is connected  $\Leftrightarrow$ $\any \mathcal{A,B} \neq \emptyset$, $\mathcal{A} \cap \mathcal{B} = \emptyset$, if $\mathcal{E} = \mathcal{A} \cup \mathcal{B}$, then $\exist \{ x_n \} \in \mathcal{A}$ (or $\mathcal{B}$) s.t $\{ x_n \} \rightarrow x \in \mathcal{B}$ (or $\mathcal{A}$).\\
+    \indent \indent \indent \indent \indent \indent \indent \indent$\Leftrightarrow$ $\any a,b,c \in \R$, $a<c<b$, if $a,b \in \mathcal{E}$, then $c \in \mathcal{E}$.
 \end{theorem}
 \begin{proof}
     (i) $\Rightarrow$ (iii) \\
-    Let $A =  (-\infty, C) \cap E \ni a$, $B = (C, +\infty) \cap E \ni b$, and A, B separated. Since E is connected, E $\neq A \cup B = R \cap E \setminus \{C\} \Rightarrow C \in E$. $\hfill\blacksquare$
+    Let $\mathcal{A} =  (-\infty, \mathcal{C}) \cap \mathcal{E} \ni a$, $\mathcal{B} = (\mathcal{C}, +\infty) \cap \mathcal{E} \ni b$, and $\mathcal{A, B}$ separated. Since $\mathcal{E}$ is connected, 
+    \[
+    \mathcal{E} \neq \mathcal{A} \cup \mathcal{B} = \mathcal{R} \cap \mathcal{E} \setminus \{\mathcal{C}\} \Rightarrow \mathcal{C} \in \mathcal{E}.
+    \]. $\hfill\blacksquare$
 
 \begin{tikzpicture}[scale=1]
 \coordinate (P) at (0, 0);
@@ -202,94 +211,115 @@ Similarly for $\liminf a_n$.
 \coordinate (D) at (4, 0);
 \coordinate (E) at (5, 0);
 \draw[->] (P)--(E) node [below right]{$x$};
-\draw (A) node[above] {$A$};
+\draw (A) node[above] {$\mathcal{A}$};
 \draw (B) node[below] {E};
-\draw (C) node[above] {$B$} ;
+\draw (C) node[above] {$\mathcal{B}$} ;
 \draw (P) node {$($};
 \draw (B) node {$)($};
 \draw (D) node {$)$};
     \end{tikzpicture}\\
     (iii) $\Rightarrow$ (ii)\\
-    Let $A, B \neq \emptyset$, $A \cap B = \emptyset$, $E = A \cup B$. \\
-    Let $a_0 \in A$, $b_0 \in B$, then $a_0<c_0<b_0$. \\
-    Let $a_1 \in A$, $a_1>a_0$, $b_1 \in B$, $b_1<b_0$, choose $c_1$ divide $[a_1,b_1]$ into half. Thus, we get
+    Let $\mathcal{A, B} \neq \emptyset$, $\mathcal{A} \cap \mathcal{B} = \emptyset$, $\mathcal{E} = \mathcal{A} \cup \mathcal{B}$. \\
+    Let $a_0 \in \mathcal{A}$, $b_0 \in \mathcal{B}$, then $a_0<c_0<b_0$. \\
+    Let $a_1 \in \mathcal{A}$, $a_1>a_0$, $b_1 \in \mathcal{B}$, $b_1<b_0$, choose $c_1$ divide $[a_1,b_1]$ into half. Thus, we get
     \[
         I_1 \supseteq I_2 \supseteq...\supseteq I_n \supseteq...
     \]
-    Then, $\bigcap\limits_{i=1}^\infty I_i \neq \emptyset$, since $len(I_n) \rightarrow 0, \existonly c \in \bigcap\limits_{i=1}^\infty I_i$ and $c_n \rightarrow c \in E$ (not enough). We have 
+    Then, $\bigcap\limits_{i=1}^\infty I_i \neq \emptyset$, since $len(I_n) \rightarrow 0, \existonly c \in \bigcap\limits_{i=1}^\infty I_i$ and $c_n \rightarrow c \in \mathcal{E}$ (not enough). We have 
     \begin{enumerate}
-        \item Suppose $c \in A$ then $\{b_n\} \subseteq B$, $b_n \rightarrow c$;
-        \item Suppose $c \in B$ then $\{a_n\} \subseteq A$, $a_n \rightarrow c$.$\hfill\blacksquare$
+        \item Suppose $c \in \mathcal{A}$ then $\{b_n\} \subseteq \mathcal{B}$, $b_n \rightarrow c$;
+        \item Suppose $c \in \mathcal{B}$ then $\{a_n\} \subseteq \mathcal{A}$, $a_n \rightarrow c$.$\hfill\blacksquare$
     \end{enumerate} 
-    Either $A\cap B = \emptyset$ or $B \cap A = \emptyset \Rightarrow$ E must be connected.
+    Either $\mathcal{A}\cap \mathcal{B} = \emptyset$ or $\mathcal{B} \cap \mathcal{A} = \emptyset \Rightarrow$ $\mathcal{E}$ must be connected.
 \end{proof}
 \begin{definition}
 \label{Cantor set}
-    Cantor set $[ G = \bigcap\limits_{n=1}^\infty S_n]$ \\
-    $S_0 = [0,1]$\\
-    $S_1 = [0,\frac{1}{3}]\cup [\frac{2}{3},1]$\\
-    $S_2 = [0, \frac{1}{9}] \cup [\frac{2}{9}, \frac{1}{3}]\cup [\frac{2}{3}, \frac{7}{9}]\cup[\frac{8}{9}, 1]$\\
+    Cantor set $[ \mathcal{G} = \bigcap\limits_{n=1}^\infty \mathcal{S}_n]$ \\
+    $\mathcal{S}_0 = [0,1]$\\
+    $\mathcal{S}_1 = [0,\cfrac{1}{3}]\cup [\cfrac{2}{3},1]$\\
+    $\mathcal{S}_2 = [0, \cfrac{1}{9}] \cup [\cfrac{2}{9}, \cfrac{1}{3}]\cup [\cfrac{2}{3}, \cfrac{7}{9}]\cup[\cfrac{8}{9}, 1]$\\
     $\vdots$ \\
-    $\Rightarrow$ (1)  $\bigcap\limits_{n=1}^\infty S_n$ is compact. (2) $\bigcap\limits_{n=1}^\infty S_n$ measure zero. (3) $\#\bigcap\limits_{n=1}^\infty S_n = \infty$ uncountable. (4) Int $\bigcap\limits_{n=1}^\infty S_n = \emptyset$ (Int = (open) interval (e.x. Int $[a,b] =(a,b)$). %反证 
-    (5) G is a \uwave{perfect set}.
+    $\Rightarrow$ (1)  $\bigcap\limits_{n=1}^\infty \mathcal{S}_n$ is compact. (2) $\bigcap\limits_{n=1}^\infty \mathcal{S}_n$ measure zero. (3) $\#\bigcap\limits_{n=1}^\infty \mathcal{S}_n = \infty$ uncountable. (4) Int $\bigcap\limits_{n=1}^\infty \mathcal{S}_n = \emptyset$ (Int = (open) interval (e.x. Int $[a,b] =(a,b)$). %反证 
+    (5) $\mathcal{G}$ is a \uwave{perfect set}.
     %XXX
 \end{definition}
 \begin{proof}
-    (5) Let $x \in G$ \\
-    \textcircled{1} x is not the right end point of one of the interval of $S_n$. Then, let $x_n$ be the right end point of $I_n \subseteq S_n$, $x \in I_n$, then we have $x_n \rightarrow x$. \\
+    (5) Let $x \in \mathcal{G}.$ \\
+    \textcircled{1} x is not the right end point of one of the interval of $\mathcal{S}_n$. Then, let $x_n$ be the right end point of $I_n \subseteq \mathcal{S}_n$, $x \in I_n$, then we have $x_n \rightarrow x$. \\
     \textcircled{2} x is the right end point, then take $x_n$ be the left end pts.
 \end{proof}
 \begin{proof}
-    (4) Removing $=\frac{1}{3} + \frac{2}{3 \times 3} + ... = \sum_{n=0}^\infty \frac{2^n}{3^{n+1}} = \frac{1}{3} \cdot \frac{1}{1-\frac{2}{3}} = 1$
-    $\therefore \|G\| =\|[0,1]\| - removing = 1-1 =0$
+    (4) Removing $=\cfrac{1}{3} + \cfrac{2}{3 \times 3} + ... = \sum_{n=0}^\infty \cfrac{2^n}{3^{n+1}} = \cfrac{1}{3} \cdot \cfrac{1}{1-\frac{2}{3}} = 1$
+    $\therefore \|\mathcal{G}\| =\|[0,1]\| - removing = 1-1 =0$.
 \end{proof}
 \begin{theorem}
     A non-empty perfect set is uncountable.
 \end{theorem}
 % page 8
 \begin{definition}
-    $f:A\rightarrow \R$ is a function. c is a \uwave{limit point} of the demain A. Then $\lim_{x\to\ c} f(x) = L \Leftrightarrow \any \epsilon >0$, $\exist \delta >0$ s.t $0<|x-c|<\delta \Rightarrow |f(x)-L| < \epsilon$
+    $f:\mathcal{A}\rightarrow \R$ is a function. c is a \uwave{limit point} of the domain $\mathcal{A}$. Then \[
+    \lim_{x\to\ c} f(x) = L \Leftrightarrow \any \epsilon >0, \exist \delta >0 s.t 0<|x-c|<\delta \Rightarrow |f(x)-L| < \epsilon.
+    \]
 \end{definition}
 \begin{theorem}[Sequential Criterion for Functional Limits]
 \label{Sequential Criterion for Functional Limits}
-    Given $f:A\rightarrow \R$, c is a limit point of A.\\
+    Given $f:\mathcal{A}\rightarrow \R$, c is a limit point of $\mathcal{A}$.\\
     (i) $\lim_{x\to\ c} f(x) = L\\ \Leftrightarrow$ 
-    (ii) $\any \{x_n\} \subseteq A$ s.t $x_n \neq c$ and $\lim_{n\to\infty} x_n = c \Rightarrow \lim_{n\to\infty} f(x_n) = L.$
+    (ii) $\any \{x_n\} \subseteq \mathcal{A}$ s.t $x_n \neq c$ and $\lim_{n\to\infty} x_n = c \Rightarrow \lim_{n\to\infty} f(x_n) = L.$
 \end{theorem}
 \begin{proof}
     ($\Rightarrow$) \\
-    Let $\{x_n\} \subseteq A$ be given. $x_n \neq c$, $\epsilon > 0$ be given. \\
-    Since $\lim_{x\to\ c} f(x) = c$, $\exist \delta$ s.t $0<|x-c|<\delta_0 \Rightarrow |f(x) -L| <\epsilon$. \\
-    Since $\lim_{x\to\infty} x_n = c$, $\exist N $ s.t $n>N \Rightarrow 0<|x_n -c| <\delta$ for the $\delta$. \\
+    Let $\{x_n\} \subseteq \mathcal{A}$ be given. $x_n \neq c$, $\epsilon > 0$ be given. \\
+    Since 
+    \[
+    \lim_{x\to\ c} f(x) = c, \exist \delta s.t 0<|x-c|<\delta_0 \Rightarrow |f(x) -L| <\epsilon.
+    \] \\
+    Since 
+    \[
+    \lim_{x\to\infty} x_n = c, \exist N  s.t n>N \Rightarrow 0<|x_n -c| <\delta \text{ for the }\delta.
+    \] \\
     Take $N = N_0$, assume $n>N$, then:\\
-    $0<|x_n-c|<\delta \Rightarrow |f(x_n) -L| <\epsilon$\\
+    \[
+    0<|x_n-c|<\delta \Rightarrow |f(x_n) -L| <\epsilon.
+    \]\\
     ($\Leftarrow$) \\
-    Assume $\exist \epsilon > 0$ s.t $\any \delta >0$, $\exist x_0 \in A$, $0<|x_0 -c| < \delta$ and $|f(x)-L| \geq \epsilon$.
-    Let $\delta = \frac{1}{n}$, $\exist x_n \neq c$ s.t $0<|x_n-c|<\frac{1}{n}$ and $|f(x_n) -L| \geq \epsilon$, $\any n \in \N$, thus, we make a sequence $\{x_n\}$,\\
+    Assume \[
+    \exist \epsilon > 0 s.t \any \delta >0, \exist x_0 \in \mathcal{A}, 0<|x_0 -c| < \delta \text{ and } |f(x)-L| \geq \epsilon.
+    \]
+    Let $\delta = \cfrac{1}{n}$, 
+    \[
+    \exist x_n \neq c s.t 0<|x_n-c|<\cfrac{1}{n} \text{ and } |f(x_n) -L| \geq \epsilon, \any n \in \N,\] 
+    thus, we make a sequence $\{x_n\}$,\\
     \uwave{thus, $x_n \rightarrow c$} $\Rightarrow |f(x_n) - L| <\epsilon$.
 \end{proof}
 \begin{theorem}[Algebraic Limit Theorem]
 \label{Algebraic Limit Theorem}
-    $f:A \rightarrow \R$, c is a limit point on A. \\
-    $\exist \{ x_n\}, \{y_n\} \subseteq A$, $x_n \neq c$, $y_n \neq c$, $\lim_{n\to\infty} x_n = \lim_{n\to\infty} y_n = c$, $\lim_{n\to\infty} f(x_n) \neq \lim_{x\to\infty} f(y_n) \Rightarrow \lim_{x\to\ c} f(x)$ D.N.E.
+    $f:\mathcal{A} \rightarrow \R$, c is a limit point on $\mathcal{A}$. \\
+    $\exist \{ x_n\}, \{y_n\} \subseteq \mathcal{A}$, $x_n \neq c$, $y_n \neq c$, $\lim_{n\to\infty} x_n = \lim_{n\to\infty} y_n = c$, $\lim_{n\to\infty} f(x_n) \neq \lim_{x\to\infty} f(y_n) \Rightarrow \lim_{x\to\ c} f(x)$ D.N.E.
 \end{theorem}
 \begin{example}
-    $$
+    \[
         f(x) = 
     \begin{cases}
         \text{1 } x \in \Q \\
         \text{0 } x \in \Q^c
-    \end{cases}$$ \\
-    Let $\delta = \frac{1}{n}$, then take $x_n \in \Q \cap V_\delta (a)$, $y_n \in \Q^c \cap V_\delta (a)$, then $x_n \rightarrow a$, $y_n \rightarrow a$, $\any a \in \R$, but $f(x_n) =1$, $f(y_n) = 0$\\
+    \end{cases}\] \\
+    Let $\delta = \cfrac{1}{n}$, then take $x_n \in \Q \cap V_\delta (a)$, $y_n \in \Q^c \cap V_\delta (a)$, then $x_n \rightarrow a$, $y_n \rightarrow a$, $\any a \in \R$, but $f(x_n) =1$, $f(y_n) = 0,$\\
     $\therefore \lim_{x\to\ a} f(x)$ D.N.E., $\any a \in \R$.
 \end{example}
 \begin{definition}
-    $f:A\rightarrow\R$ is continuous at a point of A, $c \in A$ if $\any \epsilon > 0$, $\exist \delta >0$ s.t $\uwave{|x-c|<\delta }\Rightarrow |f(x)-f(c)| < \epsilon$. %\therefore 不需要 limit points
+    $f:\mathcal{A}\rightarrow\R$ is continuous at a point of $\mathcal{A}$, $c \in \mathcal{A}$ if 
+    \[
+    \any \epsilon > 0, \exist \delta >0 s.t \uwave{|x-c|<\delta }\Rightarrow |f(x)-f(c)| < \epsilon.
+    \]
+    %\therefore 不需要 limit points
 \end{definition}
 \begin{definition}
-    $f:A\rightarrow\R$ is continuous at a point of A if f is continuous at every point of A.
+    $f:\mathcal{A}\rightarrow\R$ is continuous at a point of $\mathcal{A}$ if f is continuous at every point of $\mathcal{A}$.
 \end{definition}
 \uwave{Criterion of Discontinuity} \\
-Given $f: A\rightarrow \R$, $c \in A$ be a limit point of A. \\
-\indent $\exist \{x_n\} \subseteq A$ s.t $x_n \rightarrow c$ but $f(x_n) \nrightarrow f(c)$. \\
+Given $f: \mathcal{A}\rightarrow \R$, $c \in \mathcal{A}$ be a limit point of $\mathcal{A}$. \\
+ \[
+\exist \{x_n\} \subseteq \mathcal{A} s.t x_n \rightarrow c but f(x_n) \nrightarrow f(c).
+\] \\
 $\Rightarrow$ f is not c.t.s at c.
