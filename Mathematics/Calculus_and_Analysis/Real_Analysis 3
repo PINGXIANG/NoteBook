@@ -1,0 +1,175 @@
+\begin{example}
+    Thomas function 
+    \[ f(X) =
+        \begin{cases}
+            0 \quad x\in \Q^c \\
+            \cfrac{1}{\epsilon} \quad x= \cfrac{p}{q}\text{ in the lowest terms} \\
+            1 \quad x=0
+        \end{cases}
+    \]
+\end{example}
+WTS: $lim_{x\to\infty} f(x) = 0$.
+\begin{proof}
+    Let $a \in (0, 1)$ be given. \\
+    Let $\epsilon >0$ be given. Since $\lim_{n\to\infty} \frac{1}{n} =0$, $\exist N \in \N$ s.t $|\frac{1}{n}| < \epsilon$ \\
+    Consider $L = \{0,1, \frac{1}{2}, \frac{1}{3}, \frac{2}{3}, \frac{1}{4}, \frac{3}{4},..., \frac{N-2}{N-1}\}$, let $\epsilon_i \in L$, $d_i = |a-\epsilon_i|$. If $a\in L$, drop that num in $L$. \\
+    Since $L$ is a finite set, define $m=\inf d_i$. \\
+    Take $\delta = \frac{m}{2}$, then $\mathcal{V}_\delta (a) n L = \emptyset.$ \\
+    Assume $x \in \mathcal{V}_\delta (a)$, then $|f(x)| < \epsilon$. i.e., 
+    \[
+    \begin{cases}
+        a \notin \Q \Rightarrow \lim_{x\to\ a} f(x) = f(a) = 0 \text{ c.t.s.} \\
+        a \notin \Q^c \Rightarrow \lim_{x\to\ a} f(x) = 0 \text{ but } f(a) \neq 0. \text{ not c.t.s.}
+    \end{cases}
+    \]
+    
+    $\Rightarrow$ f(x) is c.t.s. on $\Q^c$ only.
+\end{proof}
+\section{Extreme Value Theorem}
+$f: \mathcal{K} \rightarrow \R$ is c.t.s. on a compact set $\mathcal{K} \subseteq \R$ \\
+$\Rightarrow \exist x_*, x^*$ s.t $\any x \in \mathcal{K}$, $f(x_*) \leq f(x) \leq f(x^*)$ \\
+\begin{proof}
+    Since $\mathcal{K}$ is compact, $\exist \sup f(k) \in \R$ (bounded) for k(k), and $\sup f(k) \in \mathcal{K}$ (closed).
+\end{proof}
+\begin{definition}
+    $f:\mathcal{A} \rightarrow \R$ is \uline{uniformly c.t.s.} on $\mathcal{A}$ if $\any \epsilon >0$, $\exist \delta >0$ s.t $\any x, y \in \mathcal{A}$, 
+    \[
+    |x-y| < \delta \Rightarrow |f(x) -f(y)| < \epsilon.
+    \]
+\end{definition}
+\begin{theorem}[Sequential Criterion for Absence of Uniform Continuity]
+\label{Sequential Criterion for Absence of Uniform Continuity}
+$\exist \epsilon_0 >0$ ,$\{x_n\}$, $\{y_n\} \in \mathcal{A}$ s.t $|x_n - y_n | \rightarrow 0$ but $|f(x_n)-f(y_n) | \geq \epsilon_0 \Leftrightarrow $ f is not uniformly c.t.s.
+\end{theorem}
+\begin{proof}
+    $|x_n -y_n| < \cfrac{1}{n}$, take $\delta = \cfrac{1}{n}$.
+\end{proof}
+\begin{theorem}
+    $f: \mathcal{A} \rightarrow \R$ c.t.s. on compact $\mathcal{A} \Rightarrow$ f is uniformly c.t.s.
+\end{theorem}
+\begin{proof}
+    Assume not uniformly c.t.s. $\exist x_n, y_n$ s.t $|x_n-y_n| \rightarrow 0$ and $|f(x_n)-f(y_n)| \geq \epsilon_0$. \\
+    Since $\mathcal{K}$ is compact, \[
+    \exist x_{n_k} \rightarrow x\in \mathcal{K}\text{, }y_{n_k} \rightarrow y \in \mathcal{K}.
+    \] \\
+    Since 
+    \[|x_n - y_n| \rightarrow 0 \Rightarrow |x_{n_k} - y_{n_k}| \rightarrow 0 \Rightarrow x=y \in \mathcal{K}.
+    \] \\
+    Since f is c.t.s. on $\mathcal{K}$, take $\epsilon >0$, $|f(x_{n_k}) -f(y_{n_k})| < \epsilon$.
+\end{proof}
+\section{Intermediate Value Theorem}
+$f: [a,b] \rightarrow \R$ c.t.s. $L \in \R$, \\
+\[
+f(a)<L<f(b) \Rightarrow \exist c \in (a,b) \text{ s.t } f(c) = L.
+\] 
+\begin{proof}
+    $L \in \big(f(a), f(b)\big) \subseteq f\big([a,b]\big) \Rightarrow$ by image definition, $\exist c $ $f(c)=L$.
+\end{proof}
+\begin{theorem}
+    $f: \mathcal{G} \rightarrow \R$ c.t.s. \\
+    $E \subseteq \mathcal{G}$ is connected $\Rightarrow f(E)$ is connected.
+\end{theorem}
+\begin{proof}
+    Let $f(E)=\mathcal{A} \cup \mathcal{B}$, $\mathcal{A} \cap \mathcal{B} = \emptyset$, $\mathcal{A} \neq \emptyset$, $\mathcal{B} \neq \emptyset$. \\
+    Thus, $E = f^{-1}(\mathcal{A}) \cup f^{-1}(\mathcal{B})$ and $f^{-1}(\mathcal{A}) \cap f^{-1}(\mathcal{B}) = \emptyset$, $f^{-1}(\mathcal{A}) \neq \emptyset$, $f^{-1}(\mathcal{B}) \neq \emptyset \Rightarrow f(x_n) \subseteq \mathcal{A}$, $f(x) \in \mathcal{B}$. \\
+    Since f is c.t.s., $\lim_{n\to\infty} f(x_n) = f(x) \Rightarrow$ E is connected.
+\end{proof}
+*Recall: \\
+ \indent $\mathcal{K} \subseteq \R$, $\mathcal{K}$ connected $\Rightarrow \mathcal{K}$ is an interval. 
+\begin{definition}
+    $\any n\in \N$, $f_n : \mathcal{A} \subseteq \R \rightarrow \R$. \\
+    The sequence $\{f_n\}$ \uline{converges pointwise} on $\mathcal{A}$ to a function f if $\any x \in \mathcal{A}$, $\lim_{n\to\infty} f_n(x) = f(x)$. \\
+    denote as $f_n \rightarrow f$.
+\end{definition}
+\begin{definition}
+    $f_n: \mathcal{A} \rightarrow \R$ \uline{converge uniformly} on $\mathcal{A}$ if $\any \epsilon>0$, $\exist N \in \N $ s.t $|f_n(x) -f(x)| < \epsilon$ whenever $n \in \N$ and $x\in \mathcal{A}$.
+\end{definition}
+Cauthy Criterion for Uniform Convergence\\
+\indent $f_n: \mathcal{A} \rightarrow \R$ converges uniformly on $\mathcal{A}$ \\
+$\Leftrightarrow \any \epsilon >0$, $\exist N \in \N$ s.t $|f_n(x) -f_m(x)| < \epsilon$ whenever $m,n \geq N$ \& $x\in \mathcal{A}$.
+\\
+*which is called \uline{uniformly Cauthy}.\\ 
+\begin{proof}
+    ($\Rightarrow$) $|f_n(x) -f_m(x)| \leq |f_n(x) -f(x)| + |f_m(x) -f(x)| < \epsilon$. \\
+    ($\Leftarrow$) $|f_n(x) -f(x)|$ (pointwise limit) $= \lim_{k\to\infty} |f_m(x) - f_{m+k} (x)| \leq \cfrac{\epsilon}{2} \\ < \epsilon$.
+\end{proof}
+\section{Series of Function}
+\begin{definition}
+    $\sum_{n+1}^\infty f(x)$ converges pointwise (uniformly) if $\sum_{n+1}^\infty f_n(x)$ converge pointwisely (uniformly).
+\end{definition}
+\begin{theorem}
+     \[  \left.
+    \begin{aligned}
+    f_n: \mathcal{S} \subseteq \R^k \rightarrow \R^m \text{ c.t.s.}\\ \sum_{n=1}^\infty f_n \rightarrow F \text{ uniformly}
+    \end{aligned}
+    \right\} 
+    \Rightarrow \text{F is c.t.s.}
+    \]
+\end{theorem}
+\begin{definition}
+    $f_n: \mathcal{S} \subseteq \R^k \rightarrow \R^m$ is uniformly Cauthy on $\mathcal{S}$ if $\any \epsilon >0$, $\exist N $ s.t \\$\sup_{x \in \mathcal{S}} \| \sum_{i=k+1}^l f_i(x) \| \leq \epsilon$, $\any l >\geq K \geq N$.
+\end{definition}
+\begin{theorem}
+     $f_n$ is uniformly Cauthy $\Leftrightarrow \sum f_n \rightarrow$ F uniformly.
+\end{theorem}
+\begin{proof}
+    Let $F_m = \sum_{k=1}^m f_k(x),$\\
+    ($\Rightarrow$) $\because f_n$ is uniformly Cauthy, $F_m$ is Cauthy $\Rightarrow$ F exists. $\any \epsilon>0$, $\exist N $ s.t $\| F_k -F_l\|< \epsilon$, $\any l \geq K \geq N$, $\any x \in \mathcal{S}$. \\
+    $\Rightarrow \lim_{l\to\infty} \|F_l (x) - F_k (x) \| = \|F (x) - F_k (x)\| \leq \epsilon$. \\
+    $\Rightarrow F_m \rightarrow F$.
+    %($\Leftarrow$) 略
+\end{proof}
+\uline{Weierstrass Test} \\
+$a_n: \mathcal{S} \rightarrow \R^m$ c.t.s. $M_n \in \R$ s.t $\exist N$, $\any k \geq N$, $\sup_{x \in \mathcal{S}} \|a_n\| \leq M_n$. \\
+$\sum_{n=1}^\infty M_n$ converge $\Rightarrow \sum_{n=1}^\infty a_n$ converge \uwave{uniformly}.\\
+\begin{proof}
+    $\any x \in \mathcal{S}$, 
+    \[
+    \sum_{n=1}^\infty \|a_n\| \leq \sum_{n+1}^N |a_n(x)| + \sum_{n=N+1}^\infty M_n< \infty \Rightarrow F = \sum_{n=1}^\infty a_n \text{ exists.}
+    \]
+    $\any x \in \mathcal{S}$, $\any l \geq N$, 
+    \[
+    \left\|F(x) - \sum_{k=1}^l a_k(x)\right \|=\left\|\sum_{k=l+!}^\infty a_k \right\| \leq \sum_{k=l+1}^\infty \|a_k\| \leq \sum_{k=l+1}^\infty M_k \rightarrow 0 \Rightarrow \sum a_n \rightarrow F \text{ uniformly.}
+    \]
+\end{proof}
+\uline{Weiestrass Function} \\
+$F(x) = \sum_{n=1}^\infty \cfrac{1}{2^n} \cdot \cos (10^n \pi x) = \cfrac{\cos 10\pi x}{2} + \cfrac{\cos 10^n \pi x}{2}+ ...$ \\
+\begin{proof}
+    $\sup_{x \in \R} f(x) \leq \frac{1}{2^n}$, $\sum_{n=1}^\infty \frac{1}{2^n} = 1 \Rightarrow F(x)$ converge unif. $\Rightarrow$ F(x) \uwave{c.t.s.} Also, f(x) is differentiable at any $x\in \R$. \\
+    However: \\
+    fixed $x \in \R$ with $x_0$, $x_1$, $x_2...$ decimally. \\
+    fixed $n_0 \in \N$. Construct a sequence $\{\mathcal{Z}_n\}\rightarrow x$ s.t $\frac{|f(\mathcal{Z}_n) - f(x)|}{|\mathcal{Z}_n -x|} \rightarrow \infty.$ \\
+    Define $y_0 = x_0$, $x_1$,...,$x_n$ \\
+    $y_1 = y_0 +\frac{1}{10^n} = x_0$, $x_1$,...,$(x_n +1)$ \\ %[但可能要进位，故何如此写] 于是
+    $y_0$, $y_1$ are depended on n, $\any n \in \N$. \\
+    Let $Z_n = y_0$, $y_1$ depended on situation, $\any n \in \N$. \\
+    WTS: estimate $|F(y_0) - F(y_1)|$.\\
+    \textcircled{1} 
+    \[
+    |f_n(y_0) -f_n(y_1)| \leadsto 10^n y_0 = x_0, x_1,..., x_n, 10^n y_1 = x_0, x_1,..., x_n+1
+    \text{(one is even, one is odd.) }
+    \]\\
+    = $\cfrac{|(-1)^{x_n}-(-1)^{x_n+1}|}{2^n} = \cfrac{|(-1)^{x_n} + (1+1)|}{2^n} = \cfrac{1}{2^{n-1}}$. \\
+    \textcircled{2} for k>n, 
+    \[
+    |f_k(y_0) -f_k (y_1) | \leadsto 10^{n+m} y_0 = x_0
+    x_1,..., x_n \overbrace{000...0}^m, 
+    10^{n+m} y_1 = ...\overbrace{0...0}^m
+    \] \\
+    = $\abs[\Big]{\cfrac{1}{2^k}-\cfrac{1}{2^k}} = 0$.\\
+    \textcircled{3} for k<n, by MVT, on $[y_0, y_1]$, $\exist c \in [y_0, y_1]$ s.t 
+    \[
+    |f^{'}_k (c)|= \abs[\Big]{\cfrac{f_k(y_0) -f_k(y_1)}{y_0-y_1}} = 10^n |f_k(y_0) -f_k (y_1) | \Rightarrow |f_k(y_0)-f_k (y_1)| = 10^{-n} |f^{'}_k (c) |.
+    \] \\
+    $f^{'}_k (x) = - \cfrac{10^k \pi}{2^k} \sin (10^k \pi x)$ \\ $\therefore |f^{'}_k (c)| < \cfrac{10^k \pi}{2^k}$,  $|f_k(y_0) -f_k (y_1) | \leq \cfrac{10^{k-n}\pi}{2^k}$.\\
+    \[
+    \therefore |F(y_0) -F (y_1) | = \abs[\Big]{ \sum_{k=1}^{n-1} [f_k(y_0) -f_k (y_1)] +[f_n(y_0) -f_n (y_1)] + \sum_{k=n+1}^\infty 0 }\]\[ 
+    \geq \cfrac{1}{2^{n-1}} - \cfrac{\pi}{x_n} \sum_{k=1}^{n-1} (5^{k-n}) \geq \cfrac{2}{2^n} - \cfrac{\pi}{2^{n+2}} > \cfrac{1}{2^n}
+    \]
+    $\therefore \cfrac{1}{2^n} < |F(y_0) -F (y_1) | \leq |F(y_0) -F (x) | + |F(x) -F (y_1) |$ \\
+    $\Rightarrow$ eiher $|F(y_0) -F (x) |$ or $|F(x) -F (y_1) | > \cfrac{1}{2^{n+1}}.$ \\
+    $\Rightarrow$ Let $Z_n$ be the bigger one s.t $|F(Z_n) -F (x) | > \cfrac{1}{2^n}$, $\any n \in \N$. \\
+    $\therefore \cfrac{|F(Z_n) -F (x) |}{|Z_n -x|} \geq 10^n \cfrac{1}{2^{n+1}} = \cfrac{5^n}{2}.$
+\end{proof}
+$\therefore$ c.t.s. everywhere but not diff. everywhere.
+
