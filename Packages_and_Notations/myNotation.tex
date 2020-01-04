@@ -10,7 +10,6 @@
 \renewcommand{\equiv}{\Leftrightarrow}
 \renewcommand{\iff}{\textit{iff} \hspace{0.25em}}
 
-
 %% Environment styles
 % XXX need to add more
 \newenvironment{proof}
@@ -18,11 +17,16 @@
     {$\hfill\blacksquare$
     
     \end{quote}}
+\newenvironment{property}
+{\textbf{\textit{Prop:}} \begin{quote}}
+{\end{quote}}
 \newtheorem{theorem}{Thm}[section]
 \newtheorem{corollary}{Corollary}[theorem]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{definition}{Def.}[section]
-\newtheorem{example}{E.X.}[section]
+\newtheorem{example}{E.X.}{section}
+
+ 
 
 
 %% Linear algebra notations
@@ -31,4 +35,3 @@
 \newcommand{\matc}[1]{\begin{bmatrix}#1\end{bmatrix}}
 % Determinant
 \renewcommand{\det}[1]{\begin{vmatrix*}[r]#1\end{vmatrix*}}
-
