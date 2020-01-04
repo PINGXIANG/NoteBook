@@ -1,0 +1,153 @@
+\begin{proof}
+    (generalized MVT) f,g c.t.s. on [a, b], differentiable on (a, b) $\Rightarrow \exist c \in (a, b)$ s.t $\big( f(b) - f(a) \big) \cdot g'(c) = \big( g(b) - g(a) \big) \cdot f'(c)$. \\
+    \begin{proof}
+        $h(x) = \big( f(b) -f(a) \big) g(x) - \big( g(b) -g(a) \big) f(x)$.  \\
+        By MVT, $\exist c$ s.t $h(c)=0$.
+    \end{proof}
+    $\Rightarrow \exist c \in (0, x)$ s.t $E_N(x) - E_N (0)$ \\
+    Given $E'_N (x) = f'(x) - S'_N (x)$, $(x^{N+1})' = (N+1)x^N$, $\exist c_1 \in (0, x)$ s.t $\big( E_N (x) - 0) \cdot (N+1) c_1^{N+1} = (x^{N+1} -0) \cdot E'_N (G)$. \\
+    Given $E''_N (x) $ and $x^N$ \\
+    ($E'_N (G) - 0) \cdot N \cdot c^{N-1}_2 = (c^N_1 - 0) E''_N (c_2).$ \\
+    $\vdots$\\
+    $\Rightarrow \cfrac{E_N (x) 
+    }{x^{N+1}} = \cfrac{E'_N(c_1)}{(N+1)c^N_1}= \cfrac{E''_N(C_2)}{(N+1)N c^{N-1}_2} = ... = \cfrac{f^{(N+1)}(\xi)}{(N+1)!}$
+\end{proof}
+\section{Power Series}
+\begin{theorem}
+    If a \uline{power series} converges at some pt. $x_0 \in \R$, then $\any x$ s.t $|x| < |x_0|$
+\end{theorem}
+\begin{proof}
+    $\sum_{n=0}^\infty a_n x^n$ converges at some pt. $x_0 \in \R \Rightarrow \{a_n x_0^n \} \rightarrow 0$. \\
+    $\Rightarrow \exist M \in \R$ s.t $\any n \in \N$, $|a_n x^n_0| < M$. \\ 
+    $\Rightarrow \any x \in \R$, $|x| < |x_0|$, $|a_n x^n| = |a_n x^n_0|\big| \frac{x}{x_0} \big| ^n < M \cdot \big| \frac{x}{x_0} \big| ^n$. \\
+    $\therefore \sum |a_n x^n| < \sum M \cdot q^n$, where q<1 $\Rightarrow$ geometric sequence. \\
+    $\Rightarrow \any x \in \R$, $|x| < |x_0|$, $\sum a_n x^n$ converge unif. 
+\end{proof}
+\begin{theorem}[Abet's Theorem]
+\label{Abet's Theorem}
+    If power series f(x) = $\sum^\infty_{n=1} a_n x^n$ be a series that converges at $x_0>0$, then f(x) converges uniformly $[0, x_0]$ at least, vise versa.
+\end{theorem}
+\begin{theorem}
+    Power series f(x) pointwisely converge on $\mathcal{A} \subseteq \R \Rightarrow$ f(x) \uline{unif.} converge on any compact $\mathcal{K} \subseteq \mathcal{A}$. %（略）
+\end{theorem}
+\begin{theorem}
+    If $\sum^\infty_{n=1} a_n x^n$ converge for all $x \in (-R, R)$, then $\sum^\infty_{n=1} n\cdot a_n \cdot x^{n-1}$ converges for all $(-R, R)$.
+\end{theorem}
+\begin{proof}
+    By comparison test.
+\end{proof}
+\begin{theorem}[Lagrange's Reminder Theorem]
+\label{Lagrange's Reminder Theorem}
+   Let f be differnetiable on (-R,R) N+1 times, define $a_n = \frac{f^{(n)}(0)}{n!}$ for $n \in \{0, 1, ..., N\}$. \\
+   $S_N (x):= a_0 + a_1 x + ... + a_n x^N$ [Talor polynomial of order n] \\
+   $E_N (x):= f(x) - S_N(x)$ \\
+   $\Rightarrow$ Given $x \in (-R,R)$, $\exist \xi \in (-R, R)$ s.t $|\xi|<|x|$, $E_N (x) = \frac{f^{(N+1)}(\xi)}{(N+1)!}\cdot x^{N+1}$. 
+\end{theorem}
+\begin{example}
+    \[
+    g(x) =
+    \begin{cases}
+        e^{-1/x^2} &\text{ } x \neq 0 \\
+        0 &\text{ } x=0
+    \end{cases}
+    \text{ is a }C^\infty\text{ function}.
+    \]
+\end{example}
+\section{Ruemann-integral Functions}
+\begin{definition}
+    A \uline{partition} $\mathcal{P}$ of $[a,b]$ is a \uwave{finite} set of \uwave{pts.} that has a, b as its elements, with \\
+    $\underbrace{a}_{x_0} < x_1 < ... < x_{n-1} < \underbrace{n}_{x_n}$
+\end{definition}
+Let \uwave{f(x) be bounded on $[a,b]$}, $m_k := \inf^n_{k=1} \{ f(x) : x \in [x_{k-1}, x_k]\}$ \\
+\indent \indent \indent \indent\indent \indent  \indent \indent \quad $M_k := \sup^n_{k=1} \{ f(x): x \in [x_{k-1}, x_k]\}$.\\
+\begin{definition}
+    Lower sum $L (f, \mathcal{P}) := \sum^n_{k=1} m_k (x_k - x_{k-1})$ \\
+    \indent \indent \quad Upper sum $U(f, \mathcal{P}) := \sum^n_{k=1} M_k (x_k - x_{k-1})$
+\end{definition}
+\begin{definition}
+    A partion $\mathcal{Q}$ is a \uline{refinement} of $\mathcal{P}$ if $\mathcal{P} \subseteq \mathcal{Q}$.
+\end{definition}
+\begin{lemma}
+    If $\mathcal{P} \subseteq \mathcal{Q}$, then $L(f, \mathcal{P}) \leq L(f,\mathcal{Q})$ and $U(f,\mathcal{P}) \geq U(f,\mathcal{Q})$.
+\end{lemma}
+\begin{proof}
+\begin{align*}
+    m_k (x_k - x_{k-1}) &= m_k (x_k - Z) + m_k (Z - x_{k-1}) \\
+    &\leq \underbrace{m_k'}_{\inf f(x) \text{ on }(x_k, Z)} (x_k - Z) + m_k'' (Z - x_{k-1}) \\
+    \Rightarrow L(f, \mathcal{P}) \leq L(f, \mathcal{Q}).
+    \end{align*}
+\end{proof}
+\begin{lemma}
+    $\any \mathcal{P}_1$, $\mathcal{P}_2 \subseteq [a,b]$, $L(f,\mathcal{P}_1) \leq U (f, \mathcal{P}_2)$.
+\end{lemma}
+\begin{proof}
+    Let $\mathcal{Q}=\mathcal{P}_1 \cup \mathcal{P}_2$, then $L(f, \mathcal{P}_1) \leq L(f, \mathcal{Q}) \leq U(f, \mathcal{Q}) \leq U(f, \mathcal{P}_2). $
+\end{proof}
+\begin{definition}
+    Let $\mathcal{P}$ be the collection of all possible partition of $[a,b]$, $U(f) := \inf\{ U(f, p) | p \in \mathcal{P}$, $L(f) = \sup \{ L(f,p) | p \in \mathcal{P}\}$, f is \uline{integral} if U(f) = L(f).
+\end{definition}
+\begin{lemma}
+    $\any$ \uwave{bounded} function f on $[a,b]$, $U(f_1 \geq L(f)$.
+\end{lemma}
+\begin{proof}
+    cut-property.
+\end{proof}
+\begin{theorem}
+    A bounded function f on [a,b] $\Leftrightarrow \any \epsilon >0$, $\exist P_\epsilon$ of $[a,b]$ s.t $U(f, P_\epsilon) - L(f, P_\epsilon) <\epsilon$.
+\end{theorem}
+\begin{proof}
+    ($\Rightarrow$) Since $\inf = \sup$, $\any \epsilon >0$, $\exist \epsilon >0$, $\exist \mathcal{P}_1$, $\mathcal{P}_2$ s.t $U(f, \mathcal{P}_1) - L(f, \mathcal{P}_2) <\epsilon$. \\ 
+    Let $\mathcal{P}_\epsilon = \mathcal{P}_1 \cup \mathcal{P}_2$, then $\mathcal{P}_1 \subseteq \mathcal{P}_\epsilon$, $\mathcal{P}_2 \subseteq \mathcal{P}_\epsilon$, we have: \\
+    \[
+    U(f, P_\epsilon) < U(f, \mathcal{P}_1) \quad L(f, \mathcal{P}_\epsilon) > L(f, \mathcal{P}_\epsilon)
+    \]
+    thus: 
+    \[
+    U(f, \mathcal{P}_\epsilon) - L (f, \mathcal{P}_\epsilon) < U(f, \mathcal{P}_1) - L(f, \mathcal{P}_2) < \epsilon. 
+    \]  \\
+    ($\Leftarrow$) %略
+\end{proof}
+\begin{theorem}
+    f is c.t.s. on $\uwave{[a,b]} \Rightarrow$ f is integrable. 
+\end{theorem}
+\begin{proof}
+    $[a, b]$ is compact $\Rightarrow$ f is bounded and f is uniformly c.t.s. \\
+    $\therefore \exist \delta$ s.t 
+    \[
+    |x-y| < \delta \Rightarrow |f(x)-f(y)| < \epsilon/(b-a)
+    \]\\
+    $\Rightarrow P = \{ a, a+ \delta, a+2\delta,..., b- \delta, b\}$ \\ %\Rightarrow %其中有一个余项 \Delta x \leq ]delta 
+    $\Rightarrow \sum \Delta M_i \Delta x_i < \frac{\epsilon}{b-a} \sum \Delta x < \frac{\epsilon}{b-a} \cdot (b-a) = \epsilon$.
+\end{proof}
+\begin{theorem}
+    If f is bounded function on $[a,b]$ and integrable on $[a,b]$, $\any c \in (a,b)$, then f is integrable on $[a,b]$. 
+\end{theorem}
+\begin{proof}
+    $\epsilon > 0$, take $c \in (a, a+ \cfrac{\epsilon}{2})$.
+\end{proof}
+\begin{property}
+\begin{itemize}
+    \item f is bounded on $[a,b]$. \\
+    $\uwave{\exist} c \in (a,b)$, f integrable on $[a,c]$ and $[c,b] \Leftrightarrow$ f integrable on $[a,b]$. \\
+    \begin{proof}
+        ($\Rightarrow$) triangular inequality. \\
+        ($\Leftarrow$) $\because$ Integrable, $\exist \mathcal{P}_\epsilon$ s.t $U(f,\mathcal{P}_\epsilon^{[c,b]}) - L (f, \mathcal{P}_\epsilon^{[a,c]}) - L (f, \mathcal{P}_\epsilon^{[c,d]}) < \epsilon$. \\
+        $\because U(f, \mathcal{P}) > L(f, \mathcal{P})$ $\therefore U(f,\mathcal{P}_\epsilon^{[a,c]}) - L(f,\mathcal{P}_\epsilon^{[a,c]}) < \epsilon$.
+    \end{proof}
+    \item $\int^b_a f = \int^c_a f + \int^b_c f.$ \\
+    \begin{proof}
+        \textcircled{1} \[
+        \int_a^b f \leq \int^c_a f + \int^b_c f.
+        \] \\
+        Given $\epsilon >0$, $\exist \mathcal{P}_\epsilon$ s.t \[
+        U(f, \mathcal{P}_\epsilon) - L(f, \mathcal{P}_\epsilon) + \epsilon \Rightarrow 
+        \int^b_a f \leq U(f, \mathcal{P}_\epsilon) - L(f, \mathcal{P}_\epsilon) < \epsilon \]\[ \leq L(f,\mathcal{P}_\epsilon^{[a,c]}) - L(f,\mathcal{P}_\epsilon^{[a,c]}) + \epsilon \leq \int^c_a f + \int^b_c f + \epsilon. 
+        \] \\
+        \[ \Rightarrow
+        \int_a^b f \leq \int^c_a f + \int^b_c f.\]
+        \textcircled{2} ($\exist P_1$ of $[a,c]$, $P_2$ of $[c,b]$).
+    \end{proof}
+    \item f, g integrable on $[a,b] \Rightarrow$ $f+g$ is integrable on $[a,b]$ and $\int_a^b (f+g) = \int_a^b f + \int_a^b g$. \\
+    $\Rightarrow \any k \in \R$, kf isintegrable on $[a,b]$ and $k\int_a^b f$.
+\end{itemize}
+\end{property}
