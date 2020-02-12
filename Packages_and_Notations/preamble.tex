@@ -1,26 +1,59 @@
 %%
 %% All packages and macros needed for the problemsets
 %%
-
 \usepackage{amsmath}
 
 \usepackage{lipsum}
 %\usepackage{showframe}
 %\usepackage{layout}
 
+% Chinese 
+\usepackage{xeCJK}
+
+% Mathbf 
+\usepackage{bm}
 
 \usepackage[charter,cal=cmcal]{mathdesign} %different font
 %\usepackage{avant}
 
 % for emphasize
 \usepackage{ulem}
+\makeatletter
+\newcommand\colorwave[1][red]{\bgroup \markoverwith{\lower3.5\p@\hbox{\sixly \textcolor{#1}{\char58}}}\ULon}
+\font\sixly=lasy6 % does not re-load if already loaded, so no memory problem.
+\makeatother
 
 % for dash box
 \usepackage{adjustbox}
 \usepackage{dashbox}
 
-\usepackage{microtype}
+% for cancel line style in STA
+\usepackage[makeroom]{cancel}
+
+% make hyperlink a different color
+\usepackage{hyperref}
+% def the refer color
+\hypersetup{
+    colorlinks=true,
+    linkcolor=red,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
+
+% footnote number by page
+\usepackage[perpage]{footmisc}
+
+% \floor and \ceil function
 \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+% not package
+\usepackage{centernot}
+
+
+\usepackage{microtype}
+
 \usepackage{etoolbox}
 %\usepackage{amsfonts}
 %\usepackage{amssymb}
@@ -45,11 +78,12 @@
 \usepackage{marginnote}
 \usepackage{mparhack}
 \usepackage{marginfix}
-\usepackage[hidelinks]{hyperref}
-\usepackage{fnpct} % fancy footnote spacing
-\usepackage{bm}
-\usepackage{systeme}
-\usepackage{datatool}% http://ctan.org/pkg/datatool for sorted lists
+%%% Jason's hyperref
+% \usepackage[hidelinks]{hyperref}
+% \usepackage{fnpct} % fancy footnote spacing
+% \usepackage{bm}
+% \usepackage{systeme}
+% \usepackage{datatool}% http://ctan.org/pkg/datatool for sorted lists
 \usepackage{xspace}
 
 
