@@ -1,0 +1,556 @@
+\section{Introduction}
+
+\begin{definition}
+a \uline{Time Series (TS)}
+\footnote{In this chapter, T is always \uline{discrete} and \uline{equally spaced}.} 
+$X_T$ is a sequence of r.v. that ordered in time T. i.e., 
+\[
+    X_T = \{X_t, t\in T\}.
+\]
+
+\end{definition}
+
+\begin{definition}[sample ACVF]
+\uline{sample auto-covariance function} 
+\[
+    \widehat{\gamma}_X (h) := \frac{1}{n} \sum_{i=t}^{n-|h|} (X_{t+|h|} - \Bar{X}) (X_t - \Bar{X}),  \quad w.l \quad |h| < n.
+\]
+\end{definition}
+
+\begin{definition}[sample ACF]
+\uline{sample auto-correlation function}
+\[
+    \widehat{\rho}_X (h) := \frac{\widehat{\gamma}_X (h)}{\widehat{\gamma}_X (0)}
+\]
+\end{definition}
+
+\begin{lemma}
+If $\gamma_{t, t+ h} = \gamma_X(h), \any t\in T$,  then $\rho_X(h) = \frac{\gamma_x(h)}{\gamma_X(0)}$.
+
+\noindent Notice that \seq{X_t} do not need to be weakly stationary.
+\end{lemma}
+
+\begin{definition}
+$f: \Z \rightarrow \R$ is \uline{non-negative definite} \iff 
+\[
+    \sum_{i=1}^n \sum_{j=1}^n a_i f(i-j) a_j \geq 0, \any n\in\N, \bm{a} \in \R^n.
+\]
+
+\end{definition}
+
+\begin{property}[(Basic property of $\gamma(h)$)]
+\item $|\gamma(h)| \leq \gamma(0)$, $\any h$.
+\item $\gamma(h) = \gamma(-h), \any h$.
+\item $\gamma(h)$ is non-negative definite.
+
+\begin{proof}
+$var(\sum a_i X_i) \geq 0 \Rightarrow \sum_i \sum_j a_i Cov(X_i, X_j) a_j \geq 0.$
+\end{proof}
+\end{property}
+
+\begin{theorem}
+$\gamma : \Z \rightarrow \R$ is ACVF of $X_T$ \iff symmetric \& non-negative definite.
+\end{theorem}
+
+%%%
+\section{Stationary}
+\begin{definition}
+$X_T$ is \uline{(weakly) stationary} \iff 
+\begin{itemize}
+    \item $\mu_i = \mu$, $\any i$, for some const. $\mu \in R$.
+    \item $\gamma_{i,i+h} = f(|h|), \any i,h$, for some fnc. $f: \R \rightarrow \R$.
+    \footnote{From now on, $\gamma_X (h) := f(|h|)$, and $\gamma(h)$ and $\rho(h)$ represent the Short cut of "ACVF" and "ACF" respectively.}
+\end{itemize}
+\end{definition}
+
+% \begin{property}
+% $X_T$ is weakly stationary $\Rightarrow$ $\rho_X(h) = \cfrac{\gamma(h)}{\gamma(0)}$ $\indep$ $i$.
+% \footnote{Notice that $$\rho_X(h)=\cfrac{\gamma_{i,i+h}}{\sqrt{\gamma_{i,i}}\cdot\sqrt{\gamma_{i+h,i+h}}},$$ where $\gamma_{i,i+h} = f(|h|)$ and $\gamma_{i,i} = \gamma_{i+h,i+h} = f(|0|)$ given the definition of stationary.}
+% \end{property}
+
+\begin{definition}
+$X_T$ is \uline{strictly stationary} \iff the joint distribution
+\[
+    f_{X_i,X_{i+1},\cdots,X_{i+h}} = f_{X_{i+k},X_{i+k+1},\cdots,X_{i+k+h}}, \any i, k, h
+\]
+\end{definition}
+
+% \begin{property}[(Basic property of strictly stationary)]
+% \item $X_t$ is identically distributed.
+% \item $\matc{X_t\\ \vdots \\ X_{t+h}} \overset{d}{=} \matc{X_1\\ \vdots \\ X_{1+h}}, \any t,h$
+% \item $i.i.d \Rightarrow$ strictly property.
+% \end{property}
+
+\begin{theorem}
+If $\seq{X_t}$ is strictly stationary \& \uwave{$\mu_i,\gamma_{i,j}$ exists, $\any i, j$}, then $X_T$ is weakly stationary.
+\end{theorem}
+
+\begin{example}[strictly stationary $\centernot\Rightarrow$ weakly stationary]
+Cauthy distribution $F(x|x_o,\gamma) = \frac{1}{\pi} \arctan(\frac{x-x_o}{\gamma}) + \frac{1}{2}$.
+\end{example}
+
+\begin{proof}
+Let k = 2b, then
+\begin{align*}
+    EX &= \int_{-\infty}^{\infty} xf(x) dx = \lim_{a,b\to \infty} \int_{-b}^{a} xf(x) dx \\
+    &= \lim _{k=a-b,b\to\infty}\int_{k}^{k+b} xf(x)dx + \cancelto{0}{\int _{-b}^{b} xf(x) dx}.
+\end{align*}
+That is, $EX$ $DNE$.
+
+Similarly, $EX^2 \propto \int_{-\infty}^{\infty} \frac{x^2}{1+x^2}dx = \int_{-\infty}^{\infty} 1 dx - \int_{-\infty}^{\infty} \frac{1}{1+x^2}dx = DNE$.
+
+By \href{https://en.wikipedia.org/wiki/H\%C3\%B6lder\%27s_inequality}{Holder Inequality}, $\any$ moments of it is $DNE$.
+\end{proof}
+
+%%%
+\section{Processes}
+
+\begin{definition}
+$\seq{W_t}$ is \uline{i.i.d noise} \iff \seq{W_t} is i.i.d \& $E(W_t) = 0, \any t$.
+\end{definition}
+
+\begin{definition}
+$\{Z_t\}$ is \uline{White noise} \iff $E(Z_t) = 0$ \& $Cov(Z_t,Z_s) = 
+\begin{cases}
+\sigma^2 &, t=s\\
+0 &, t \neq s
+\end{cases}
+$.
+
+noted as $WN(0,\sigma^2)$.
+\end{definition}
+
+\begin{property}
+\item independent $\Rightarrow$ $\gamma_\epsilon(h) = 
+\begin{cases}
+0 &, t \neq s\\
+\sigma_i^2 &, t=s
+\end{cases}
+$.
+\item $i.i.d$ $\Rightarrow$ independent + Homoscedasticity $\Rightarrow$ $WN(0,\sigma^2)$.
+\begin{example}[$WN(0,\sigma^2)$ $\centernot\Rightarrow$ i.i.d.]
+\colorwave[red]{$Y_t = Z_t Z_{t-1}$, where $Z_t \sim N(0,\sigma^2)$.}  
+\end{example}
+\end{property}
+
+\begin{definition}
+$\{X_t\}$ is called \uline{random walk}
+\footnote{origin: \href{https://en.wikipedia.org/wiki/Brownian_motion}{Brownian motion} (布朗运动).}.
+\iff $X_t = \sum_{j=1}^{t} W_j$, w.l. \seq{W_j} be i.i.d noise. 
+\end{definition}
+
+\begin{definition}
+\seq{X_t} is called \uline{simple random walk} \iff $(W_j + \frac{1}{2}) \overset{i.i.d}{\sim} bern(\frac{1}{2})$.
+\end{definition}
+
+\begin{property}
+$Var(X_t) = i \sigma^2$, i.e., \uwave{not stationary}.
+\end{property}
+
+\subsection{Linear process}
+\begin{definition}
+\seq{X_t} is \uline{linear process} \iff 
+\begin{itemize}
+    \item $X_t = \sum_{j = -\infty}^{\infty} a_j Z_j \quad w.l \quad Z_j \sim \WN$. 
+    \item $\sum_{j= -\infty}^{\infty}|a_j|<\infty$, i.e., converge.
+\end{itemize}
+
+That is, $X_t$ is a L.C. of \seq{Z_j}. Notice that $a_j$ could be 0.
+\end{definition}
+
+\begin{property}
+Let $\{Y_t\}$ is stationary, and \seq{X_t} is a \uwave{L.C.} of $\{Y_t\}$, and $\sum_{j = -\infty}^{\infty}|a_j|<\infty$. Then,
+\[
+    \gamma_X(h) = \sum_{j = -\infty}^{\infty}\sum_{k = -\infty}^{\infty} a_j a_k \gamma_Y(h+k-j).
+\]
+If $Y_t \sim \WN$, then \color{red}{$\gamma_X(h) = \sigma^2 \sum_{j  = -\infty}^{\infty}a_j a_{j+h}$}. 
+\end{property}
+
+\noindent \textbf{- $q^{th}$ order moving average MA(q) process.}
+
+\begin{definition}
+\seq{X_t} is \uline{MA(1) process} w.l coefficient a, $\sigma^2$ \iff $X_t = Z_t + a Z_{t-1}$ w.l. $Z_t \sim \WN$.
+\end{definition}
+% \begin{property}
+% \item $E(X_t) = 0, \any t$.
+% \item $\gamma(h) = 
+% \begin{cases}
+% (1+a^2) \cdot \sigma^2 &, |h| = 0\\
+% a \cdot \sigma^2 &, |h| = 1\\
+% 0 &, |h|>2
+% \end{cases}$
+% \end{property}
+
+\begin{definition}
+\seq{X_t} is \uline{MA(q) process} \iff 
+\[
+    X_t = \sum_{j=t-q}^{t}a_j Z_j \quad w.l \quad Z_j \sim \WN.
+\]
+\end{definition}
+
+\begin{definition}
+\seq{X_t} is \uline{q-dependent} \iff $\any k > q$ , $X_t \indep X_{t+k}$.
+\end{definition}
+
+\begin{property}
+$\{e_t\}$ is q-dependent $\Rightarrow$ for any fnc. $G: \R^q \rightarrow \R^q$, s.t., $X_t = G(e_t, \cdots, e_{t+q})$ , \seq{X_t} is q-dependent.
+\end{property}
+
+\begin{definition}
+\seq{X_t} is \uline{q-correlated} \iff $\any k > q$ , $\rho_{X_t, X_{t+k}} = 0$.
+\end{definition}
+
+\begin{theorem}
+\seq{X_t} can be written as a MA(q) process $\Leftrightarrow$ \seq{X_t} is q-correlated \& stationary.
+\end{theorem}
+
+\begin{proof}
+($\Leftarrow$) Trivial, 略.\\
+($\Rightarrow$) Too non-trivial, 略.
+\end{proof}
+
+\begin{definition}
+\seq{X_t} is \uline{MA($\infty$) process} w.l coefficient $\bm{a}$, $\sigma^2$ \iff $X_t = \sum_{j = - \infty}^{t} a_j Z_j$ w.l. $Z_t \sim \WN$ and $\sum_{j = -\infty}^{\infty} |a_j| < \infty$.
+\end{definition}
+\vspace{1em}
+
+\noindent \textbf{- $p^{th}$ order auto-regressive AR(p) process}
+
+\begin{definition}
+\seq{X_t} is a \uline{ AR(1) process} w.l coefficient a, $\sigma^2$ \iff $X_t = Z_t + a X_{t-1}, \quad Z_t \sim \WN$.
+\end{definition}
+
+% \begin{property}
+% \item $E(X_t) = 0$, $\any t$.
+% \item $\gamma (h) = \cfrac{a^{|h|}}{1-a^2} \cdot \sigma^2$.
+% \item $Cov(X_t, Z_{t+1}) = 0, \any t$. \footnote{Because $X_t$ is a L.C. of $Z_t, Z_{t-1}, \cdot\cdot\cdot, Z_2, Z_1.$}
+% \item $\rho_X (h) \downarrow$ geometrically as |h| $\uparrow$.
+% \end{property}
+
+\begin{definition}
+\seq{X_t} is \uline{causal process} \iff $X_t = \sum_{j = -\infty}^{t} a_j Z_j$, w.l. $Z_t \sim \WN$.
+
+Notice that $X_t$ is a L.C. of historical pts. only.
+\end{definition}
+
+\begin{lemma}
+AR(1) is casual $\Leftrightarrow$ AR(1) is MA($\infty$) $\Leftrightarrow$ $|a| \leq 1$ $\Leftrightarrow$ $\sum |a_j| < \infty$.
+\end{lemma}
+
+\begin{proof}
+$X_t = \frac{1}{1-a B} Z_t = \sum_{j = -\infty}^{t} a^{t-j} Z_j$ is a kind of MA($\infty$), and MA($\infty$) is causal. 
+\end{proof}
+
+\vspace{1em}
+
+\noindent \textbf{- The merger between AR(p) and MA(q) process}
+
+\begin{definition}
+\seq{X_t} is \uline{ARMA(1,1) process} \iff $(1-a B)X_t = (1 + \theta B) Z_t$, w.l. \uwave{$\theta + a \neq 0$}
+\footnote{if $a=-\theta$, then $X_t = Z_t$, \WN は興味がありません！}
+and $Z_t \sim \WN$.
+\end{definition}
+
+\begin{property}
+\item |a|< 1 $\Rightarrow$ ARMA(1,1) is MA($\infty$).
+
+\begin{proof}
+SInce |a| < 1, $X_t = \frac{1}{1-a B}Z_t = (1+ \frac{a + \theta}{1-a B})Z_t = Z_t + \sum_{j = 1}^{\infty} a^{j-1}Z_j.$
+\footnote{It is incorrect to write $(1+ \frac{a + \theta}{1-a B})$, but it is fine here.}
+\end{proof}
+\item |a|>1, $\exist$ a stationary non-causal solution to $(1-a B)X_t = (1+\theta B) Z_t$.
+
+XXX. (Unfinished)
+\end{property}
+
+\begin{definition}
+\seq{X_t} is \uline{invertable process} \iff $Z_t$ can be written as a L.C. of $X_s$, where $s\leq t$.
+\end{definition}
+
+\begin{lemma}
+$|\theta| < 1$ $\Rightarrow$ ARMA(1,1) is invertable.
+\end{lemma}
+
+\begin{proof}
+$Z_t = \frac{1- a B}{1+\theta B} X_t = \cdots B^j X_t$.
+\end{proof}
+
+%%%
+\section{Hypothesis tests of TS}
+
+\subsection{i.i,d ?}
+
+\textbf{Target}:
+\begin{itemize}
+    \item \textit{before}: If true, the history is useless for forecasting.
+    \item \textit{after}: If false, $\hat{\epsilon}$ is not good enough.
+\end{itemize}
+
+\begin{enumerate}
+    \item \textbf{Non-rigorous test}
+    
+    XXX
+    
+    \textit{* dis-adv}: Multiple testing problem 
+    \footnote{t-test v.s F-test.}.
+    
+    \item \textbf{Ljung Box test}\footnote{modified $Q_{LB}$ is better when $n \leq 100$, same when n is large.}
+    
+    $H_0 : (i.i.d \Rightarrow \rho = 0 \Rightarrow \rho^2 = 0)$.
+    \begin{align*}
+        \hat{Q}_{LB} &= n \sum_{j=1}^{h} \hat{\rho}^2(j) \sim \chisq_h.\\
+        modified-\hat{Q}_{LB} &= n(n+2) \sum_{j=1}^{h} \frac{\hat{\rho}^2(j)}{n-j} \sim \chisq_h.
+    \end{align*}
+    
+    
+    \textit{* dis-adv}: \\
+    When h is large, the \# of Q is too small; \\
+    When h is small, the lag h is not large enough.
+    
+    \textbf{Rule of thumb}: h = 2 $\floor{\ln{n}}$.
+    
+    \item \textbf{McLeod \& Li test}\footnote{The ACF of $x_t$ is not large enough, thus making it to be $x^2$.}
+    
+    $H_0 : (i.i.d \Rightarrow \rho = 0 \Rightarrow \rho^2 = 0)$.
+    \begin{align*}
+        \hat{Q}_{ML} = n(n+2) \sum_{j=1}^{h} \frac{\hat{\rho}_{\bm{x^2}}^2(j)}{n-j} \sim \chisq_h.
+    \end{align*}
+\end{enumerate}
+
+\subsection{Normal ?}
+
+\textbf{Target}:
+
+XXX 
+
+\begin{enumerate}
+    \item \textbf{Rough test}: Q-Q plot.\footnote{for STA457, this is enough.}
+\end{enumerate}
+
+%%%
+\section{MSE \& Linear forecast}
+
+Let \seq{X_t} be stationary.
+
+\begin{definition}
+\uline{MSE of forecast} is defined as $E[X_{t+h} - f(X_h)]^2$, where $f(X_h)$ is the forecast of $X_{t+h}$.
+\end{definition}
+
+\begin{theorem}
+$E(X_{t+h}|X_t)$ minimize MSE.
+\end{theorem}
+
+\begin{proof}
+Let $ f^*(X_t) = E(X_{t+h}|X_t)$, then
+\begin{align*}
+    E(X_{t+h}- f)^2 &= E(X_{t+h}- f^* + f^* - f)^2\\
+    &= E(X_{t+h}- f)^2 + 2E(X_{t+h}- f^*)(f^* - f) + E( f^*-  f)^2.
+\end{align*}
+Recall that $E(Y) = E[E(Y|X)]$, then
+\begin{align*}
+    2E(X_{t+h}- f^*)( f^* - f) &= 2EE[(X_{t+h}- f^*)( f^* - f)|X_t] \\
+    &= E[( f^* - f) (E(X_{t+h}|X_t) - f^*)] = 0
+\end{align*}
+\end{proof}
+
+\subsection{Forecast the Future Given TS $\seq{X_t}_{t=1}^n$.}
+
+\uwave{Criterion}:
+
+Let $\Vec{x} = (X_1, \cdots, X_n)^T$, $E(Y) = \mu$ and $E(X_t) = \mu_t$ for notation convenience. Then
+\begin{align*}
+    \min \{\text{MSE of forecast}\} = \min_{(a_0,\Vec{a})} E(Y - a_0 - a_1 X_1 -  \cdots - a_n X_n)^2 = \min_{(a_0,\Vec{a})} E(Y - a_0 - \Vec{a}\cdot \Vec{x})^2.
+\end{align*}
+\indent and view $X_0 = 1$, we have
+\[
+    \frac{\partial \mathcal{L}}{\partial a_t} = -2 E(Y - a_0 - \Vec{a}\cdot \Vec{x}) X_t = 0, \any t \quad \Rightarrow \quad E(Y X_t) = E(a_0 + \Vec{a} \cdot \Vec{x})X_t, \any t.
+\]
+\indent Notice that when t = 0, define $\Vec{\mu} = (\mu_1,\cdots ,\mu_n)$, we obtain 
+\[
+    \mu = a_0 + \Vec{a} \cdot \Vec{\mu} \quad \Leftrightarrow \quad a_0 = \mu - \sum_{j=1}^{n} a_j \mu_j
+\]
+\indent Thus,
+\begin{align*}
+    E(Y X_t) &= (\mu - \Vec{a} \cdot \Vec{\mu}) \mu_t + E(\Vec{a} \cdot \Vec{x}) X_t \quad \Rightarrow \quad E(Y X_t) - \mu \mu_t = E(\Vec{a} \cdot \Vec{x})X_t  - (\Vec{a} \cdot \Vec{x})\mu_t.
+\end{align*}
+\indent That is, $Cov(Y, X_t) = Cov (\Vec{x}, X_t), \any t$, or,
+\begin{align*}
+    Cov(Y, \Vec{x}) = \bm{Cov} (\Vec{x}, \Vec{x}) \Vec{a} \Leftrightarrow \bm{\gamma} = \bm{\Gamma}\Vec{a}.
+\end{align*}
+\indent If $\bm{\Gamma}$ is not singular, i.e., $det(\bm{\Gamma}) \neq 0$, then $\Vec{a} = \bm{\Gamma}^{-1} \bm{\gamma}$ is not only solvable, but also unique.
+
+\begin{theorem}
+The best \uwave{linear} forecast of Y based on $\seq{X_t}_{t=1}^{n}$ is 
+\[
+    P(Y|\Vec{x}) = a_0 + \Vec{a} \cdot \Vec{x},
+\]
+where $a_0 = \mu - \Vec{a} \cdot \Vec{x}$ and $\bm{\gamma} = \bm{\Gamma a}$.
+\end{theorem}
+
+\begin{theorem}
+The MSE of forecast when predicting U from $\seq{X_t}_{t=1}^{n}$ is $Var(Y^*) - \Vec{a} \cdot \bm{\gamma}$, where $Y^* = Y - \mu$.
+\end{theorem}
+
+\begin{proof}
+Let $Y^* = Y - \mu$. Then
+\begin{align*}
+    \text{MSE of forecast} &= E(Y - \mu + \Vec{a} - \Vec{a} \cdot \Vec{x})^2\\
+    &=E(Y - \mu)^2 - 2\Vec{a} \cdot E(\Vec{x})Y + E(\Vec{a} \cdot \Vec{x})^2\\
+    &=Var(Y^*) - 2 \Vec{a} \cdot \bm{\gamma} + \Vec{a} \cdot \bm{\Gamma a} = Var(Y^*) - \Vec{a} \cdot \bm{\gamma}. 
+\end{align*}
+\end{proof}
+
+\begin{property}
+\item $E(Y - P(Y|\Vec{x}) = 0$, i.e., expected forecast error is 0. 
+\item $E(Y - P(Y|\Vec{x})\Vec{x} = \bm{0}$, i.e., forecast error is uncorrelated w.l predictors.
+\item (Even if $\bm{\Gamma}$ is singular) $P(Y|\Vec{x}) = \Vec{a}^T\Vec{x}$ is still unique.
+
+\begin{proof}
+Assume that we have 2 best linear forecasters $Q_1$ and $Q_2$, s.t.,
+\begin{align*}
+Q_1 = a_0^1 + \Vec{a}_n^1 \cdot \Vec{x}\\
+Q_2 = a_0^2 + \Vec{a}_n^2 \cdot \Vec{x}
+\end{align*}
+Then, by \uwave{\textbf{prop.} 2}, we have 
+\[
+\begin{cases}
+E(Y - Q_1)\Vec{x} = \bm{0}\\
+E(Y - Q_2)\Vec{x} = \bm{0}
+\end{cases}
+\Rightarrow E(Q_1 - Q_2) \Vec{x} = \bm{0}.
+\]
+Therefore, 
+\[
+E(Q_1-Q_2)^2 = (a^1_0-a^2_0)\cancelto{0}{E(Q_1-Q_2)} + \Vec{a} \cdot \cancelto{\bm{0}}{E(Q_1-Q_2)\Vec{x}} = 0.
+\]
+That is, $Q_1 - Q_2 = 0$, w.l $Pr = 1$.
+\end{proof}
+
+\item $P(*|\Vec{x}): \Omega \rightarrow \Omega$ is a linear operator
+\footnote{$Cov$ is a linear operator.}
+over field $\R$, s.t.,
+\[
+Cov(Y, \Vec{x}) = \bm{0} \Rightarrow P(Y|\Vec{x}) = \mu \quad \& \quad P(X_t|\Vec{x}) = \mu_t, \any t.
+\]
+\item (\textit{Tower Law of Predictor}) $P(Y|\bm{u}_n) = P(P(Y|\bm{u}_n, \bm{v}_n)|\bm{u}_n)$, where $\bm{v}$ is r.v. s.t., $Cov(\bm{u}_n, \bm{v}_n) < \infty$. 
+\begin{proof}
+XXX
+\end{proof}
+\end{property}
+
+
+
+
+
+\section{Inference - Given n obs. $X_t$}
+
+\textbf{Note:}
+\[
+    \bm{Cov}(\Vec{x}, \Vec{x}) = \matc{\gamma(0)& \gamma(1)& \cdots& \gamma(n)\\
+    \gamma(-1)& \gamma(0)& \cdots& \gamma(n-1)\\
+    \vdots& \vdots& \ddots& \vdots\\
+    \gamma(-n)& \gamma(-(n-1))& \cdots& \gamma(0)\\
+    }
+\]
+
+\subsection{Mean $\mu$}
+
+\begin{align*}
+    Var(\hat{\mu}_n) &= E(\hat{\mu}_n - \mu)^2 = \frac{1}{n^2} E(X_t - \mu)^2 = \frac{1}{n^2} \sum_{i = 1}^{\infty} \sum_{j = 1}^{\infty} \gamma(i-j)\\
+    &= \frac{1}{n^2} (n\gamma(0) + (n-1)\cdot[\gamma(1) + \gamma(-1)] + (n-2)\cdot [\gamma(2) + \gamma(-2)]+ \cdots)
+\end{align*}
+
+\begin{theorem}[CLT\footnote{Not rigorous, for STA457 only.}]
+If \seq{X_t} is stationary \& $\sum_{j = 1}^{\infty} |\gamma(j)|< \infty$, then 
+\[
+    \sqrt{n}(\hat{\mu}_n - \mu) \overset{D}{\rightarrow} \mathcal{N}(0, \sum_{h = -n}^{n} (1 - \frac{|h|}{n}) \gamma(h)),
+\]
+where $\gamma(h)$ is assumed to be known.
+\footnote{If $\gamma(h)$ is unknown, then 
+\[
+    CI_{95\%} = \hat{\mu}_n \pm \frac{1.96}{\sqrt{n}} \sqrt{\hat{V}}, \quad w.l \quad \hat{V} = \sum_{h = -\sqrt{n}}^{\sqrt{n}} (1 - \frac{|h|}{n}) \hat{\gamma}(h).
+\]}
+\end{theorem}
+
+\subsection{ACVF $\gamma(h)$ \& ACF $\rho(h)$}
+
+$\Vec{\hat{\rho}}_k := (\hat{\rho}(1),\hat{\rho}(2), \cdots, \hat{\rho}(k))^T$.
+
+\begin{theorem}
+If \seq{X_t} is stationary \& $\sum_{j = 0}^{\infty} \gamma(j) < \infty$, then $\Vec{\hat{\rho}}_k \overset{d}{\rightarrow} \mathcal{N} (\bm{\rho}_k, \frac{1}{n} \bm{W}_k)$, where  $\bm{W}_k$ is a $k\times k$ matrix, s.t., 
+\[
+    w_{ij} = \sum_{k = 1}^{\infty} [\rho(k+i) + \rho(k-i) - 2\rho(i)\rho(k)] \cdot [\rho(k+j) + \rho(k-j) - 2\rho(j)\rho(k)],
+\]
+thus, $CI_{95\%} = \hat{\rho}(h) \pm \frac{1.96}{\sqrt{n}} \sqrt{w_{hh}}$.
+\end{theorem}
+
+%%%
+\section{Remove the trend}
+
+\subsection{Remove the trend only}
+\begin{enumerate}
+    \item * Linear regression $X_t = \beta_0 + \beta_1 t + \epsilon_t$.
+    
+    $\Rightarrow$ $\widehat{\epsilon}_t = X_t - \widehat{X}_t$ $\indep$ $i$. 
+    
+    \item * Homonic regression $X_t = \sum_{j=1}^{k} [a_j (\cos{\lambda_j}t) + b_j(\sin{\lambda_j}t)] + \epsilon_t$.
+    \begin{itemize}
+        \item $\lambda_j$ are chosen \uline{manually} as the potential frequency $\frac{2\pi}{T}$(usually).
+        \item K is large enough.
+    \end{itemize}
+    $\Rightarrow$ $\widehat{\epsilon}_t = X_t - \widehat{X}_t$ $\indep$ $i$.
+    
+    \item * Exponential Smoothing $X_t = \mu_t$ + $\epsilon_t$.
+    \[
+        \widehat{\mu}_t\footnote{Esitmation of the trend. Weighted average of \{$X_t$, $X_{t-1}$, ... , $X_1$\}, where  $\omega$ \uwave{decaying exponentially} \& \uwave{decaying speed $\uparrow$ as $\alpha$ $\uparrow$}.} = \sum_{j = 0}^{t - 2}[\alpha(1-\alpha)^j X_{t-j}] + (1-\alpha)^{t-1} X_1.
+    \]
+    $\Rightarrow$ $\widehat{\epsilon}_t = X_t - \widehat{\mu}_t$.
+    
+    \item Moving average $X_t = \mu_t$ + $\epsilon_t$.
+    \[
+        \widehat{\mu}_t = \frac{1}{2q+1}\sum_{j=t-q}^{t+q} X_j\footnote{if $t-q < 0$ or $t+q>n+1$, then let $x_j = x_1$, $x_j = x_n$ respectively.},
+    \]
+    where q is \uwave{manually}\footnote{Non-trivial.} picked, usually $\floor{n^{\frac{1}{3}}}$.
+    $\Rightarrow$ $\widehat{\epsilon}_t = X_t - \widehat{\mu}_t$.
+    
+    \item Differencing\footnote{
+    dis: i) \# data $\downarrow$; ii) loss the trend information.}$X_t = \mu_t +s_t + \epsilon_t$.
+    \begin{definition} 
+    \uline{Backward shift operator} B is a operator s.t., B: $X_T \rightarrow X_T$, w.l. $x_t \rightarrow x_t$.
+    \end{definition}    
+    
+    $\Rightarrow \Delta X_t
+    \footnote{
+    Assume that $\Delta X_t$ has no trend. Sometimes it still has, then do it again.
+    }
+    = (I-B)X_t$.
+\end{enumerate}
+
+\subsection{Remove trend \& Seasonality}
+\begin{enumerate}
+    \item Estimation \& Removal $X_t = \mu_t + s_t$(Seasonality) + $\epsilon_t$.
+    \[
+    \widehat{trend}
+    \begin{cases}
+    \widehat{\mu}_t = \frac{1}{2q+1}\sum_{j=t-q}^{t+q} x_j, \quad d = 2q+1 (odd)\\
+    \\
+    \widehat{\mu}_t = \frac{1}{2q}[0.5 x_{t-q} + \sum_{j=t-q}^{t+q} x_j + 0.5 x_{t+q}], \quad d = 2q (even)
+    \end{cases}
+    \]
+    $\Rightarrow \widehat{X_t} = X_t - \widehat{\mu}_t$ $\rightarrow$ Only seasonal component left.
+    
+    $\widehat{seasonal}:$ $\any k\in\N, 0 \leq k \leq d$, $A_k := \{\widehat{X}_{k+d\cdot j} | j\in\N, k+d\cdot j \leq n\}$ = $\{\widehat{x}_{k}, \widehat{x}_{k+d}, \widehat{x}_{k+2d} \cdot\cdot\cdot\}$.
+    $\widehat{s}_t :=$ average of obs. in $A_k$.
+    
+    Thus, $\any i<d,$ $\widehat{s}_t = \widehat{s}_{i-md}$, for some $m\in\N$.
+    
+    $\Rightarrow \widehat{\epsilon}_t = \widehat{X}_t - \widehat{s}_t$.
+    
+    \item Differencing $X_t = \mu_t +s_t + \epsilon_t$.
+    \begin{align*}
+    Y_t &= (I-B^d_X)X_t =X_t - X_{\uwave{t-d}} = (\mu - \mu_{t-d} + \cancelto{0}{(s_t - s_{t-d})} + (\epsilon_t + \epsilon_{t-d})\\
+    &= \widetilde{\mu}_t + \widetilde{\epsilon}_t.
+    \end{align*}
+    $\Rightarrow \Delta Y_t = (I-B_Y)Y_t$.
+    
+\end{enumerate}
