@@ -7,23 +7,28 @@
 \newcommand{\exist}{\exists \hspace{0.25em}}
 \newcommand{\existonly}{\exists! \hspace{0.25em}}
 \newcommand{\any}{\forall \hspace{0.25em}}
-\renewcommand{\equiv}{\Leftrightarrow}
 \renewcommand{\iff}{\textit{iff} \hspace{0.25em}}
-
+% STA symbols
+\newcommand{\WN}{\ifmmode WN(0,\sigma^2) \else $WN(0,\sigma^2)$ \fi}
+\newcommand{\seq}[1]{\ifmmode \{#1\} \else $\{#1\}$ \fi}
+\newcommand{\chisq}{\mbox{\Large$\chi$}^2}
 
 %% Environment styles
 % XXX need to add more
 \newenvironment{proof}
     {\hspace*{0.5em}\textbf{\textit{pf:}} \begin{quote}}
-    {$\hfill\blacksquare$
-    
-    \end{quote}}
+    {$\hfill\blacksquare$\end{quote}}
 \newtheorem{theorem}{Thm}[section]
 \newtheorem{corollary}{Corollary}[theorem]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{definition}{Def.}[section]
 \newtheorem{example}{E.X.}[section]
-
+\newtheorem{notation}{Notation.}
+% \newtheorem{property}{\quad prop.}[definition]
+\newenvironment{property}[1][]
+    {\textbf{\uwave{prop.} #1} \begin{quote}
+    \begin{enumerate}}
+    {\end{enumerate}\end{quote}}
 
 %% Linear algebra notations
 % Matrix
@@ -31,4 +36,8 @@
 \newcommand{\matc}[1]{\begin{bmatrix}#1\end{bmatrix}}
 % Determinant
 \renewcommand{\det}[1]{\begin{vmatrix*}[r]#1\end{vmatrix*}}
+% Independent
+\newcommand{\indep}{\rotatebox[origin=c]{90}{$\models$}}
+% Vector
+\renewcommand{\vec}[1]{\bm{#1}}
 
